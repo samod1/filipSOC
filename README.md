@@ -1,0 +1,2 @@
+# filipSOC
+Stredoskolska Odborna cinnost 
