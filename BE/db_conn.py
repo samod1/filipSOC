@@ -12,3 +12,5 @@ mydb = mysql.connector.connect(
 if mydb.is_connected():
         db_Info = mydb.get_server_info()
         print ("Connected to MySQL Server version", db_Info)
+
+#FIXME dokoncit overovanie pre uspesne resp. neuspesne spojenie s databazov
