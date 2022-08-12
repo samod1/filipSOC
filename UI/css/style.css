@@ -6,6 +6,8 @@ html
 body
 {
     width: 95%;
-    
+    margin: auto;
+    background: whitesmoke;
+    font-family: 'Roboto';
 
 }
