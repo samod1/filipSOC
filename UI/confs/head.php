@@ -14,6 +14,10 @@
 
     </head>
     <body>
+        
         <?php 
+        $conn = "";
         include "navbar.php";
+        echo "<div class='container-fluid'>";
+        include "DB.php";
         ?>
