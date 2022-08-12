@@ -1,6 +1,9 @@
 <html>
     <head>
-        <title><?echo $nazovTabu ?></title>
+        <title><?php echo $nazovTabu ?></title>
         <meta name="description" content="Stredoskolska odborna cinnost">
     </head>
-</html>
+    <body>
+        <?php 
+        include "navbar.php";
+        ?>
