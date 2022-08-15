@@ -1,7 +1,7 @@
 # filipSOC
 ## Stredoskolska Odborna cinnost 
 
-Praca sa zaobera zberom udajov z meteorologickych senzorov. 
+Aim of this thesis are collecting meteo values from sensors. 
 This repo has several folders 
 - **BE** means backend which are programmes for collecting data with \\python
 - **UI** is user interface completely done in php 
