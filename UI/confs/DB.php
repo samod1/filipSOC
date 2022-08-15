@@ -26,5 +26,7 @@
       </div>";
     }
 
+    $gitCommit = exec("git log --pretty=%h -n1 HEAD");
+
     //TODO grafana integration
 ?>

@@ -20,6 +20,7 @@ include "confs/head.php";
     <div class="row">
         <div class="col">
             <h3>Test</h3>
+            <p class="text-right" id="zobrazitHodiny"></p>
         </div>
     </div>
 </div>
