@@ -1,1 +1,11 @@
 **/.vscode
+*.log
+*.synctex(busy)
+*.out
+*.aux
+*.bcf
+*.fls
+*.gz
+*fdb_latexmk
+*.run.xml
+**/docs/tmp
