@@ -1,5 +1,4 @@
 <?php
-
 /**
  * VNUTORNA UNIFORMNA STRUKTURA PROGRAMU
  * pouzivat bootstrapove divy 
@@ -16,11 +15,11 @@ $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
 ?>
 
-<div class="container-fluid">
+<div  class="container-fluid">
     <div class="row">
         <div class="col">
             <h3>Test</h3>
-            <p class="text-right" id="zobrazitHodiny"></p>
+            <p id="zobrazitHodiny"></p>
         </div>
     </div>
 </div>
@@ -28,3 +27,23 @@ include "confs/head.php";
 <?php
 include "confs/footer.php";
 ?>
+
+<script>
+    function hodiny()
+{
+  const today = new Date();
+  let h = getHours();
+  let m = getMinutes();
+  let s = getSeconds();
+  m=checkTime(m);
+  s=checkTime(s);
+  document.getElementById("zobrazitHodiny").innerHTML = h + ":" + m + ":" + s;
+  setTimeout(hodiny,1000);
+}
+
+function checkTime(i)
+{
+  if(i < 10){i = "0" + i};
+  return i;
+}
+</script>
