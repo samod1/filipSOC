@@ -18,3 +18,5 @@ This repo has several folders
 
 Administrator of this repo is owner of this repo
 (c) Samuel Domin & Filip Majchrak 2022
+
+Filip
