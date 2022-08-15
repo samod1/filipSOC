@@ -1,6 +1,8 @@
 <footer>
     <div class="container-fluid bg-dark" style="position:fixed; bottom:0%;">
     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info"></i></button>
+    <p class="text-right text-white"><?php echo exec("git log --pretty=%h -n1 HEAD"); ?></p>
+    
     </div>
 </footer>
 </body>
@@ -17,8 +19,12 @@
       </div>
       <div class="modal-body">
         <p><b>Verzia: </b> 1.0.0 </b>
-        <p><b>posledny commit:</b> <?exec('git rev-parse --verify HEAD 2> /dev/null', $output);
-                                      $hash = $output[0];?></p>
+        <p><b>posledny commit:</b> <?
+        
+        $gitCommit = "";
+        include "DB.php";
+        
+        echo $gitCommit;?></p>
       </div>
       <div class="modal-footer">
         <button type="button" class=" btn btn-lg btn-block btn-secondary" data-dismiss="modal">Close</button>
