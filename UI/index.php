@@ -23,7 +23,7 @@ include "confs/head.php";
         </div>
     </div>
 </div>
-
+<p></p>
 <?php
 include "confs/footer.php";
 ?>
