@@ -1,0 +1,1 @@
+# Presiel som z dovodu jednoduchsej praca na stranku https://www.overleaf.com zaloz si tam prosim ucet pod svojim gmailom dokonca som ti tam poslal aj pozvanku
