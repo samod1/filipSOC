@@ -85,6 +85,17 @@ SELECT o.nazov_oddelenia, SUM(osoba.plat) from samod_test_db.osoba INNER JOIN sa
 UPDATE samod_test_db.osoba  SET plat = 3850 WHERE oddelenie = 7;
 
 
+INSERT INTO samod_test_db.osoba2 
+SELECT * FROM samod_test_db.osoba 
+WHERE oddelenie = 1;
+
+CREATE VIEW Ostrava AS 
+SELECT meno, priezvisko 
+FROM samod_test_db.osoba 
+WHERE bydlisko = "Ostrava";
+
+SELECT * from samod_test_db.Ostrava
+
 
 
 
