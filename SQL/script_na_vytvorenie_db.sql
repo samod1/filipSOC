@@ -75,8 +75,26 @@ VALUES("Architekt","ARC");
 
 
 
+/*Dalsia hodina SELECT*/
+
+SELECT meno, priezvisko, plat, o2.id_oddelenia  , o2.nazov_oddelenia  from samod_test_db.osoba o Inner join samod_test_db.oddelenie o2 
+WHERE o.oddelenie =o2.id_oddelenia ORDER BY o.oddelenie ASC;
+
+SELECT o.nazov_oddelenia, SUM(osoba.plat) from samod_test_db.osoba INNER JOIN samod_test_db.oddelenie o WHERE oddelenie = o.id_oddelenia GROUP by oddelenie Order by SUM(plat); 
+
+UPDATE samod_test_db.osoba  SET plat = 3850 WHERE oddelenie = 7;
 
 
+INSERT INTO samod_test_db.osoba2 
+SELECT * FROM samod_test_db.osoba 
+WHERE oddelenie = 1;
+
+CREATE VIEW Ostrava AS 
+SELECT meno, priezvisko 
+FROM samod_test_db.osoba 
+WHERE bydlisko = "Ostrava";
+
+SELECT * from samod_test_db.Ostrava
 
 
 
