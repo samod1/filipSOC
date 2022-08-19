@@ -10,16 +10,15 @@
  *  Na uvod suboru zavolat cez prikaz include z adresaru confs head.php a na zaver footer.php 
  */
 
-
+$conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
 ?>
 
 <?php
 /**Skušobné údaje */
-$teplota = 30;
-$tlak = 1014.2;
-$vlhkost = 20;
+
+
 
 ?>
 
@@ -35,22 +34,42 @@ $vlhkost = 20;
               <table class="table table-bordered table-striped text-center">
                 <thead>
                   <tr>
-                    <th></th>
+                    <th>Merany atribut</th>
                     <th>Hodnota</th>
                   </tr>
                 </thead>
                 <tbody style="">
                   <tr>
                     <td>Teplota</td>
-                    <td><?= $teplota ?>&#8451;</td>
+                    <td>
+                      <?php
+                      $query = "Select MAX(tt.id_merania),  tt.value, tt.miesto_merania, eo.názov  from filip_soc.tbl_teplota tt inner join filip_soc.enum_obce eo  on miesto_merania = kod";
+                      $result = mysqli_query($conn,$query);
+                      $pocetriadkov = mysqli_num_rows($result);
+                      if(!$result)
+                      {
+                        echo "ERR: neda sa vykonat prikaz";
+                      }
+                      
+                      else
+                      {
+                        if ($pocetriadkov == 0)
+                        {
+                          echo "V prislusnej databaze sa nic nenaslo";
+                        }
+                      }
+
+                      while ($row = mysqli_fetch_assoc($result)){
+                        echo $row["value"];
+                      } ?>&#8451;</td>
                   </tr>
                   <tr>
                     <td>Tlak vzduchu</td>
-                    <td><?=$tlak?>hPa</td>
+                    <td>hPa</td>
                   </tr>
                   <tr>
                     <td>Vlhkosť</td>
-                    <td><?=$vlhkost?>%</td>
+                    <td>%</td>
                   </tr>
                 </tbody>
               </table>
