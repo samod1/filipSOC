@@ -49,7 +49,7 @@ include "confs/head.php";
                 </tbody>
               </table>
             </div>
-            <p id="zobrazitHodiny"></p>
+            <div id = "jsclock" onload="hodiny()"></div>
         </div>
     </div>
 </div>
@@ -59,21 +59,22 @@ include "confs/footer.php";
 ?>
 
 <script>
-    function hodiny()
-{
-  const today = new Date();
-  let h = getHours();
-  let m = getMinutes();
-  let s = getSeconds();
-  m=checkTime(m);
-  s=checkTime(s);
-  document.getElementById("zobrazitHodiny").innerHTML = h + ":" + m + ":" + s;
-  setTimeout(hodiny,1000);
-}
+function hodiny() {
+  let date = new Date(); 
+  let hh = date.getHours();
+  let mm = date.getMinutes();
+  let ss = date.getSeconds();
 
-function checkTime(i)
-{
-  if(i < 10){i = "0" + i};
-  return i;
+   hh = (hh < 10) ? "0" + hh : hh;
+   mm = (mm < 10) ? "0" + mm : mm;
+   ss = (ss < 10) ? "0" + ss : ss;
+    
+   let time = hh + ":" + mm + ":" + ss + " ";
+
+  document.getElementById("jsclock").innerText = time; 
+  let t = setTimeout(function(){ hodiny() }, 1000);
 }
+hodiny();
 </script>
+
+
