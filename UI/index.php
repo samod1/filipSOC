@@ -10,11 +10,6 @@
  *  Na uvod suboru zavolat cez prikaz include z adresaru confs head.php a na zaver footer.php 
  */
 
- /**Namerané hodnoty */
- $teplota = 30;
- $tlak = 1014.2;
- $vlhkost = 20;
-
 
 $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
@@ -29,23 +24,58 @@ include "confs/head.php";
               <table class="table table-bordered table-striped text-center">
                 <thead>
                   <tr>
+                    <th>Kedy sa meralo</th>
+                    <th>Teplota</th>
+                    <th>Vlhkost</th>
+                    <th>Tlak vzduchu</th>
+                    <th>Miesto merania</th>
                     <th></th>
-                    <th>Hodnota</th>
                   </tr>
                 </thead>
                 <tbody style="">
+
                   <tr>
-                    <td>Teplota</td>
-                    <td><?= $teplota ?>&#8451;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie">
+                        Informácie
+                      </button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">
+                        Vymazať údaje
+                      </button>
+
+                      <!-- Modalne okno Informácie -->
+                      <div class="modal fade" id="informacie" tabindex="-1" role="dialog" aria-labelledby="informacie" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title " id="exampleModalLongTitle">Podrobné informácie</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <ul class="list-group">
+                                <li class="list-group-item">Čas merania: </li>
+                                <li class="list-group-item">Názov senzoru: </li>
+                                <li class="list-group-item">Využitie: </li>
+                                <li class="list-group-item">Nameraná hodnota:</li>
+                              </ul>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
-                  <tr>
-                    <td>Tlak vzduchu</td>
-                    <td><?=$tlak?>hPa</td>
-                  </tr>
-                  <tr>
-                    <td>Vlhkosť</td>
-                    <td><?=$vlhkost?>%</td>
-                  </tr>
+
                 </tbody>
               </table>
             </div>
@@ -77,3 +107,4 @@ function checkTime(i)
   return i;
 }
 </script>
+
