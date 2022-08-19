@@ -10,10 +10,12 @@
  *  Na uvod suboru zavolat cez prikaz include z adresaru confs head.php a na zaver footer.php 
  */
 
+
 $conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
 ?>
+
 
 <?php
 /**Skušobné údaje */
@@ -22,13 +24,11 @@ include "confs/head.php";
 
 ?>
 
+
 <div  class="container-fluid">
     <div class="row">
         <div class="col">
-        <div  class="container-fluid">
-    <div class="row">
-        <div class="col">
-          <h1 class="text-center">Dashboard</h1>
+          <h1 class="text-center">Posledné namerané údaje</h1>
           <!-- Tabulka s nameranými hodnotami-->
             <div id="pricing" class="container-fluid">
               <table class="table table-bordered table-striped text-center">
@@ -38,7 +38,7 @@ include "confs/head.php";
                     <th>Hodnota</th>
                   </tr>
                 </thead>
-                <tbody style="">
+                <tbody>
                   <tr>
                     <td>Teplota</td>
                     <td>
@@ -74,7 +74,7 @@ include "confs/head.php";
                 </tbody>
               </table>
             </div>
-            <p id="zobrazitHodiny"></p>
+            <div id = "jsclock" onload="hodiny()"></div>
         </div>
     </div>
 </div>
@@ -84,22 +84,20 @@ include "confs/footer.php";
 ?>
 
 <script>
-    function hodiny()
-{
-  const today = new Date();
-  let h = getHours();
-  let m = getMinutes();
-  let s = getSeconds();
-  m=checkTime(m);
-  s=checkTime(s);
-  document.getElementById("zobrazitHodiny").innerHTML = h + ":" + m + ":" + s;
-  setTimeout(hodiny,1000);
-}
+function hodiny() {
+  let date = new Date(); 
+  let hh = date.getHours();
+  let mm = date.getMinutes();
+  let ss = date.getSeconds();
 
-function checkTime(i)
-{
-  if(i < 10){i = "0" + i};
-  return i;
+   hh = (hh < 10) ? "0" + hh : hh;
+   mm = (mm < 10) ? "0" + mm : mm;
+   ss = (ss < 10) ? "0" + ss : ss;
+    
+   let time = hh + ":" + mm + ":" + ss + " ";
+
+  document.getElementById("jsclock").innerText = time; 
+  let t = setTimeout(function(){ hodiny() }, 1000);
 }
+hodiny();
 </script>
-
