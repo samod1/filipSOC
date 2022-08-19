@@ -53,7 +53,7 @@ def randomNumberGenerator():
 
 #main part of programm
 
-maximalna_pripustna_teplota = 15;
+maximalna_pripustna_teplota = 35;
 print("Maximalna pripustna teplota", maximalna_pripustna_teplota);
 x=1;
 
@@ -62,7 +62,7 @@ while True:
     namerana_teplota= randomNumberGenerator();
     print(namerana_teplota);
     overenieTeploty(maximalna_pripustna_teplota,namerana_teplota);
-    time.sleep(10);
+    time.sleep(7200);
     
 
     
