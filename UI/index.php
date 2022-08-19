@@ -10,26 +10,20 @@
  *  Na uvod suboru zavolat cez prikaz include z adresaru confs head.php a na zaver footer.php 
  */
 
+ /**Namerané hodnoty */
+ $teplota = 30;
+ $tlak = 1014.2;
+ $vlhkost = 20;
+
 
 $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
 ?>
 
-<?php
-/**Skušobné údaje */
-$teplota = 30;
-$tlak = 1014.2;
-$vlhkost = 20;
-
-?>
-
 <div  class="container-fluid">
     <div class="row">
         <div class="col">
-        <div  class="container-fluid">
-    <div class="row">
-        <div class="col">
-          <h1 class="text-center">Dashboard</h1>
+          <h1 class="text-center">Posledné namerané údaje</h1>
           <!-- Tabulka s nameranými hodnotami-->
             <div id="pricing" class="container-fluid">
               <table class="table table-bordered table-striped text-center">
@@ -83,4 +77,3 @@ function checkTime(i)
   return i;
 }
 </script>
-
