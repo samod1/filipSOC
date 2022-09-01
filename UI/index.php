@@ -36,41 +36,42 @@ include "confs/head.php";
                   <tr>
                     <th>Merany atribut</th>
                     <th>Hodnota</th>
+                    <th>Jednotka</th>
+                    <th>Čas merania</th>
+                    <th>Miesto merania</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Teplota</td>
-                    <td>
-                      <?php
-                      $query = "Select MAX(tt.id_merania),  tt.value, tt.miesto_merania, eo.názov  from filip_soc.tbl_teplota tt inner join filip_soc.enum_obce eo  on miesto_merania = kod";
-                      $result = mysqli_query($conn,$query);
-                      $pocetriadkov = mysqli_num_rows($result);
-                      if(!$result)
+                    <?php
+                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id";
+                    $result = mysqli_query($conn,$query);
+                    $pocetriadkov = mysqli_num_rows($result);
+                    if(!$result)
+                    {
+                      echo "ERR: neda sa vykonat prikaz";
+                    }
+                    
+                    else
+                    {
+                      if ($pocetriadkov == 0)
                       {
-                        echo "ERR: neda sa vykonat prikaz";
+                        echo "V prislusnej databaze sa nic nenaslo";
                       }
-                      
-                      else
-                      {
-                        if ($pocetriadkov == 0)
-                        {
-                          echo "V prislusnej databaze sa nic nenaslo";
-                        }
-                      }
+                    }
 
-                      while ($row = mysqli_fetch_assoc($result)){
-                        echo $row["value"];
-                      } ?>&#8451;</td>
-                  </tr>
-                  <tr>
-                    <td>Tlak vzduchu</td>
-                    <td>hPa</td>
-                  </tr>
-                  <tr>
-                    <td>Vlhkosť</td>
-                    <td>%</td>
-                  </tr>
+                    while ($row = mysqli_fetch_assoc($result))
+                    { 
+                      ?>
+
+                      <tr>
+                        <td>Teplota</td>
+                        <td> <?php echo $row["value"]?> </td>
+                        <td><?php echo $row["jednotka"]?> </td>
+                        <td> <?php echo $row["timestamp"]?> </td>
+                        <td> <?php echo $row["názov"]?> </td>
+                      </tr>   
+                  <?php } ?>
+
                 </tbody>
               </table>
             </div>
