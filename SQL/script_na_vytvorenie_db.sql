@@ -74,7 +74,13 @@ VALUES("Architekt","ARC");
 
 
 
+<<<<<<< Updated upstream
 
+
+
+
+/*Získavanie teploty zo SQL*/
+SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id; 
 
 
 

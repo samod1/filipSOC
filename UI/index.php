@@ -41,6 +41,24 @@ include "confs/head.php";
                     <th>Miesto merania</th>
                   </tr>
                 </thead>
+
+                <tbody style="">
+                  <tr>
+                    <td>Teplota</td>
+                    <td><?= $teplota ?>&#8451;</td>
+                  </tr>
+                  <tr>
+                    <td>Tlak vzduchu</td>
+                    <td><?=$tlak?>hPa</td>
+                  </tr>
+                  <tr>
+                    <td>Vlhkosť</td>
+                    <td><?=$vlhkost?>%</td>
+                  </tr>
+                <tbody>
+                  
+                    <?php
+                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id; ";
                 <tbody>
                     <?php
                     $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id";
@@ -61,14 +79,18 @@ include "confs/head.php";
 
                     while ($row = mysqli_fetch_assoc($result))
                     { 
-                      ?>
 
+                    ?>
                       <tr>
                         <td>Teplota</td>
                         <td> <?php echo $row["value"]?> </td>
                         <td><?php echo $row["jednotka"]?> </td>
                         <td> <?php echo $row["timestamp"]?> </td>
                         <td> <?php echo $row["názov"]?> </td>
+
+                      </tr>
+                  <?php} ?>
+
                       </tr>   
                   <?php } ?>
 
