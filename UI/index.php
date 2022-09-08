@@ -15,6 +15,7 @@ $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
 ?>
 
+<<<<<<< Updated upstream
 <?php
 /**Skušobné údaje */
 $teplota = 30;
@@ -52,6 +53,38 @@ $vlhkost = 20;
                     <td>Vlhkosť</td>
                     <td><?=$vlhkost?>%</td>
                   </tr>
+                <tbody>
+                  
+                    <?php
+                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id; ";
+                    $result = mysqli_query($conn,$query);
+                    $pocetriadkov = mysqli_num_rows($result);
+                    if(!$result)
+                    {
+                      echo "ERR: neda sa vykonat prikaz";
+                    }
+                    
+                    else
+                    {
+                      if ($pocetriadkov == 0)
+                      {
+                        echo "V prislusnej databaze sa nic nenaslo";
+                      }
+                    }
+
+                    while ($row = mysqli_fetch_assoc($result))
+                    { 
+                    ?>
+                      <tr>
+                        <td>Teplota</td>
+                        <td> <?php echo $row["value"]?> </td>
+                        <td><?php echo $row["jednotka"]?> </td>
+                        <td> <?php echo $row["timestamp"]?> </td>
+                        <td> <?php echo $row["názov"]?> </td>
+                      </tr>
+                  <?php} ?>
+
+
                 </tbody>
               </table>
             </div>
