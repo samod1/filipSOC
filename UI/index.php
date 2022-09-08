@@ -11,35 +11,37 @@
  */
 
 
+$conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
 ?>
 
-<<<<<<< Updated upstream
+
 <?php
 /**Skušobné údaje */
-$teplota = 30;
-$tlak = 1014.2;
-$vlhkost = 20;
+
+
 
 ?>
+
 
 <div  class="container-fluid">
     <div class="row">
         <div class="col">
-        <div  class="container-fluid">
-    <div class="row">
-        <div class="col">
-          <h1 class="text-center">Dashboard</h1>
+          <h1 class="text-center">Posledné namerané údaje</h1>
           <!-- Tabulka s nameranými hodnotami-->
             <div id="pricing" class="container-fluid">
               <table class="table table-bordered table-striped text-center">
                 <thead>
                   <tr>
-                    <th></th>
+                    <th>Merany atribut</th>
                     <th>Hodnota</th>
+                    <th>Jednotka</th>
+                    <th>Čas merania</th>
+                    <th>Miesto merania</th>
                   </tr>
                 </thead>
+
                 <tbody style="">
                   <tr>
                     <td>Teplota</td>
@@ -57,6 +59,9 @@ $vlhkost = 20;
                   
                     <?php
                     $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id; ";
+                <tbody>
+                    <?php
+                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id";
                     $result = mysqli_query($conn,$query);
                     $pocetriadkov = mysqli_num_rows($result);
                     if(!$result)
@@ -74,6 +79,7 @@ $vlhkost = 20;
 
                     while ($row = mysqli_fetch_assoc($result))
                     { 
+
                     ?>
                       <tr>
                         <td>Teplota</td>
@@ -81,14 +87,17 @@ $vlhkost = 20;
                         <td><?php echo $row["jednotka"]?> </td>
                         <td> <?php echo $row["timestamp"]?> </td>
                         <td> <?php echo $row["názov"]?> </td>
+
                       </tr>
                   <?php} ?>
 
+                      </tr>   
+                  <?php } ?>
 
                 </tbody>
               </table>
             </div>
-            <p id="zobrazitHodiny"></p>
+            <div id = "jsclock" onload="hodiny()"></div>
         </div>
     </div>
 </div>
@@ -98,22 +107,20 @@ include "confs/footer.php";
 ?>
 
 <script>
-    function hodiny()
-{
-  const today = new Date();
-  let h = getHours();
-  let m = getMinutes();
-  let s = getSeconds();
-  m=checkTime(m);
-  s=checkTime(s);
-  document.getElementById("zobrazitHodiny").innerHTML = h + ":" + m + ":" + s;
-  setTimeout(hodiny,1000);
-}
+function hodiny() {
+  let date = new Date(); 
+  let hh = date.getHours();
+  let mm = date.getMinutes();
+  let ss = date.getSeconds();
 
-function checkTime(i)
-{
-  if(i < 10){i = "0" + i};
-  return i;
+   hh = (hh < 10) ? "0" + hh : hh;
+   mm = (mm < 10) ? "0" + mm : mm;
+   ss = (ss < 10) ? "0" + ss : ss;
+    
+   let time = hh + ":" + mm + ":" + ss + " ";
+
+  document.getElementById("jsclock").innerText = time; 
+  let t = setTimeout(function(){ hodiny() }, 1000);
 }
+hodiny();
 </script>
-
