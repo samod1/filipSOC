@@ -43,25 +43,10 @@ include "confs/head.php";
                 </thead>
 
                 <tbody style="">
-                  <tr>
-                    <td>Teplota</td>
-                    <td><?= $teplota ?>&#8451;</td>
-                  </tr>
-                  <tr>
-                    <td>Tlak vzduchu</td>
-                    <td><?=$tlak?>hPa</td>
-                  </tr>
-                  <tr>
-                    <td>Vlhkosť</td>
-                    <td><?=$vlhkost?>%</td>
-                  </tr>
                 <tbody>
                   
                     <?php
                     $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id; ";
-                <tbody>
-                    <?php
-                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id";
                     $result = mysqli_query($conn,$query);
                     $pocetriadkov = mysqli_num_rows($result);
                     if(!$result)
