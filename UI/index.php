@@ -17,14 +17,6 @@ include "confs/head.php";
 ?>
 
 
-<?php
-/**Skušobné údaje */
-
-
-
-?>
-
-
 <div  class="container-fluid">
     <div class="row">
         <div class="col">
@@ -42,7 +34,6 @@ include "confs/head.php";
                   </tr>
                 </thead>
 
-                <tbody style="">
                 <tbody>
                   
                     <?php
@@ -74,9 +65,7 @@ include "confs/head.php";
                         <td> <?php echo $row["názov"]?> </td>
 
                       </tr>
-                  <?php} ?>
-
-                      </tr>   
+                        
                   <?php } ?>
 
                 </tbody>
