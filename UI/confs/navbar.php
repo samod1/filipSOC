@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4 text-center">Meteorologicka stanica</h1>
-        <p class="lead text-center">Zariadenie na zber meteorologickych udajov</p>
+        <h1 class="display-4 text-center">Meteorologická stanica</h1>
+        <p class="lead text-center">Zariadenie na zber meteorologických údajov</p>
       </div>
     </div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
