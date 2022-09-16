@@ -17,7 +17,7 @@ include "confs/head.php";
 ?>
 
 
-<div  class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
           <h1 class="text-center">Posledné namerané údaje</h1>
@@ -65,7 +65,7 @@ include "confs/head.php";
                         <td> <?php echo $row["názov"]?> </td>
 
                       </tr>
-                        
+                                         
                   <?php } ?>
 
                 </tbody>
