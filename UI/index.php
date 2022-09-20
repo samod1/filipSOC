@@ -17,15 +17,7 @@ include "confs/head.php";
 ?>
 
 
-<?php
-/**Skušobné údaje */
-
-
-
-?>
-
-
-<div  class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
           <h1 class="text-center">Posledné namerané údaje</h1>
@@ -42,26 +34,10 @@ include "confs/head.php";
                   </tr>
                 </thead>
 
-                <tbody style="">
-                  <tr>
-                    <td>Teplota</td>
-                    <td><?= $teplota ?>&#8451;</td>
-                  </tr>
-                  <tr>
-                    <td>Tlak vzduchu</td>
-                    <td><?=$tlak?>hPa</td>
-                  </tr>
-                  <tr>
-                    <td>Vlhkosť</td>
-                    <td><?=$vlhkost?>%</td>
-                  </tr>
                 <tbody>
                   
                     <?php
                     $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id; ";
-                <tbody>
-                    <?php
-                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id";
                     $result = mysqli_query($conn,$query);
                     $pocetriadkov = mysqli_num_rows($result);
                     if(!$result)
@@ -89,9 +65,7 @@ include "confs/head.php";
                         <td> <?php echo $row["názov"]?> </td>
 
                       </tr>
-                  <?php} ?>
-
-                      </tr>   
+                                         
                   <?php } ?>
 
                 </tbody>

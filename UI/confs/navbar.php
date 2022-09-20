@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4 text-center">Meteorologicka stanica</h1>
-        <p class="lead text-center">Zariadenie na zber meteorologickych udajov</p>
+        <h1 class="display-4 text-center">Meteorologická stanica</h1>
+        <p class="lead text-center">Zariadenie na zber meteorologických údajov</p>
       </div>
     </div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -13,13 +13,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Domov<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.php">Domov<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Grafy</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Udaje</a>
+              <a class="nav-link" href="udaje.php">Udaje</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
