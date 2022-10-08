@@ -6,9 +6,7 @@ include "confs/head.php";
 
 ?>
 
-
-
-<div  class="container-fluid">
+<div  class="container-fluid mb-5">
     <div class="row">
         <div class="col">
 
@@ -53,7 +51,7 @@ include "confs/head.php";
 
                     <?php } ?>
                 </tbody>
-              </table>
+
 
               <!--Informačné okno-->
                <div class="modal fade" id="informacie" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -97,10 +95,8 @@ include "confs/head.php";
                               </div>
                          </div>
                     </div>
-               </div>
-     
+               </div>  
             </div>
-            <div id = "jsclock" onload="hodiny()"></div>
         </div>
     </div>
 </div>
@@ -108,22 +104,3 @@ include "confs/head.php";
 <?php
 include "confs/footer.php";
 ?>
-
-<script>
-function hodiny() {
-  let date = new Date(); 
-  let hh = date.getHours();
-  let mm = date.getMinutes();
-  let ss = date.getSeconds();
-
-   hh = (hh < 10) ? "0" + hh : hh;
-   mm = (mm < 10) ? "0" + mm : mm;
-   ss = (ss < 10) ? "0" + ss : ss;
-    
-   let time = hh + ":" + mm + ":" + ss + " ";
-
-  document.getElementById("jsclock").innerText = time; 
-  let t = setTimeout(function(){ hodiny() }, 1000);
-}
-hodiny();
-</script>
