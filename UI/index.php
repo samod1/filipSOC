@@ -23,7 +23,7 @@ include "confs/head.php";
           <h1 class="text-center">Posledné namerané údaje</h1>
           <!-- Tabulka s nameranými hodnotami-->
             <div id="pricing" class="container-fluid">
-              <table class="table table-bordered table-striped text-center">
+              <table class="table table-bordered text-center">
                 <thead>
                   <tr>
                     <th>Merany atribut</th>
@@ -34,7 +34,7 @@ include "confs/head.php";
                   </tr>
                 </thead>
                 <!--Teplota-->
-                <tbody>
+                <tbody class="table-active">
                     <?php
                     $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
                     $result = mysqli_query($conn,$query);

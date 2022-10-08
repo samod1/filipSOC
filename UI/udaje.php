@@ -12,8 +12,18 @@ include "confs/head.php";
         <h1 class="text-center">Teplota</h1>
           <!-- Tabulka s 10 poslednymi hodnotami-->
             <div id="pricing" class="container-fluid">
-              <table class="table table-bordered table-striped text-center">
-                <thead>
+              <table class="table table-bordered text-center">
+                    <thead>
+                         <tr>
+                         <th>Merany atribut</th>
+                         <th>Hodnota</th>
+                         <th>Jednotka</th>
+                         <th>Čas merania</th>
+                         <th>Miesto merania</th>
+                         </tr>
+                    </thead>
+                    
+                    <tbody class="table-active">
                     <?php
                     $query = "SELECT tt.value, tt.timestamp, ej.jednotka, eo.názov from tbl_teplota tt Inner join enum_obce eo ON tt.miesto_merania =eo.kod INNER JOIN enum_jednotky ej on ej.id = tt.jednotka LIMIT 10";
                     $result = mysqli_query($conn,$query);
@@ -51,7 +61,7 @@ include "confs/head.php";
 
                     <?php } ?>
                
-                </tbody>
+                    </tbody>
                </table>
 
               <!--Informačné okno-->
