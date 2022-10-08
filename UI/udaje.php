@@ -14,7 +14,7 @@ include "confs/head.php";
 
           <!-- Tabulka s 10 poslednymi hodnotami-->
             <div id="pricing" class="container-fluid">
-              <table class="table table-bordered table-striped text-center">
+              <table class="table table-bordered table-striped text-center mb-5">
                 <thead>
                 <?php
                     $query = "SELECT tt.value, tt.timestamp, ej.jednotka, eo.názov from tbl_teplota tt Inner join enum_obce eo ON tt.miesto_merania =eo.kod INNER JOIN enum_jednotky ej on ej.id = tt.jednotka LIMIT 10";
