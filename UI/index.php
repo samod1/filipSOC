@@ -33,7 +33,7 @@ include "confs/head.php";
                     <th>Miesto merania</th>
                   </tr>
                 </thead>
-
+                <!--Teplota-->
                 <tbody>
                     <?php
                     $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
@@ -62,10 +62,10 @@ include "confs/head.php";
                         <td><?php echo $row["jednotka"];?> </td>
                         <td> <?php echo $row["timestamp"];?> </td>
                         <td> <?php echo $row["názov"];?> </td>
-
-                      </tr>
-                                         
+                      </tr>                  
                   <?php } ?>
+
+                  <!--Tlak-->
                   <?php
                     $query1 = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt  INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
                     $result1 = mysqli_query($conn,$query1);
@@ -93,9 +93,40 @@ include "confs/head.php";
                         <td><?php echo $row1["jednotka"];?> </td>
                         <td> <?php echo $row1["timestamp"];?> </td>
                         <td> <?php echo $row1["názov"];?> </td>
-                      </tr>
-                                         
+                      </tr>                                       
                   <?php } ?>
+
+                  <!--Vlhkost-->
+                  <?php
+                    $query1 = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
+                    $result1 = mysqli_query($conn,$query1);
+                    $pocetriadkov1 = mysqli_num_rows($result1);
+                    if(!$result1)
+                    {
+                      echo "ERR: neda sa vykonat prikaz";
+                    }
+                    
+                    else
+                    {
+                      if ($pocetriadkov1 == 0)
+                      {
+                        echo "V prislusnej databaze sa nic nenaslo";
+                      }
+                    }
+
+                    while ($row1 = mysqli_fetch_assoc($result1))
+                    { 
+
+                    ?>
+                      <tr>
+                        <td>Vlhkost</td>
+                        <td> <?php echo $row1["value"];?> </td>
+                        <td><?php echo $row1["jednotka"];?> </td>
+                        <td> <?php echo $row1["timestamp"];?> </td>
+                        <td> <?php echo $row1["názov"];?> </td>
+                      </tr>                                       
+                  <?php } ?>
+
                 </tbody>
               </table>
             </div>
