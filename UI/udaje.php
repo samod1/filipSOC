@@ -16,30 +16,42 @@ include "confs/head.php";
             <div id="pricing" class="container-fluid">
               <table class="table table-bordered table-striped text-center">
                 <thead>
-                  <tr>
-                    <th>Kedy sa meralo</th>
-                    <th>Teplota</th>
-                    <th>Vlhkost</th>
-                    <th>Tlak vzduchu</th>
-                    <th>Miesto merania</th>
-                    <th></th>
-                  </tr>
-                </thead>
+                <?php
+                    $query = "SELECT tt.value, tt.timestamp, ej.jednotka, eo.názov from tbl_teplota tt Inner join enum_obce eo ON tt.miesto_merania =eo.kod INNER JOIN enum_jednotky ej on ej.id = tt.jednotka LIMIT 10";
+                    $result = mysqli_query($conn,$query);
+                    $pocetriadkov = mysqli_num_rows($result);
+                    if(!$result)
+                    {
+                      echo "ERR: neda sa vykonat prikaz";
+                    }
+                    
+                    else
+                    {
+                      if ($pocetriadkov == 0)
+                      {
+                        echo "V prislusnej databaze sa nic nenaslo";
+                      }
+                    }
 
-                <tbody>
+                    while ($row = mysqli_fetch_assoc($result))
+                    { 
+
+                    ?>
                     <tr>
-                         <td>15.9.2022</td>
-                         <td>25</td>
-                         <td>80</td>
-                         <td>1056</td>
-                         <td>Trnava</td>
+                         <td>Teplota</td>
+                         <td> <?php echo $row["value"];?> </td>
+                         <td><?php echo $row["jednotka"];?> </td>
+                         <td> <?php echo $row["timestamp"];?> </td>
+                         <td> <?php echo $row["názov"];?> </td>              
                          <td>
-                              <!-- Button informácie -->
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie">Informácie</button>
-                              <!-- Button Zmazat-->
-                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat">Zmazat údaj</button>
+                         <!-- Button informácie -->
+                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie">Informácie</button>
+                         <!-- Button Zmazat-->
+                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat">Zmazat údaj</button>
                          </td>
-                    </tr>
+                    </tr>  
+
+                    <?php } ?>
                 </tbody>
               </table>
 

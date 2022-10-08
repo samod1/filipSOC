@@ -36,7 +36,7 @@ include "confs/head.php";
 
                 <tbody>
                     <?php
-                    $query = "SELECT tt.value, tt.timestamp, ej.jednotka, eo.názov from tbl_teplota tt Inner join enum_obce eo ON tt.miesto_merania =eo.kod INNER JOIN enum_jednotky ej on ej.id = tt.jednotka LIMIT 10";
+                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
                     $result = mysqli_query($conn,$query);
                     $pocetriadkov = mysqli_num_rows($result);
                     if(!$result)
