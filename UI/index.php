@@ -35,9 +35,8 @@ include "confs/head.php";
                 </thead>
 
                 <tbody>
-                  
                     <?php
-                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id; ";
+                    $query = "SELECT tt.value, tt.timestamp, ej.jednotka, eo.názov from tbl_teplota tt Inner join enum_obce eo ON tt.miesto_merania =eo.kod INNER JOIN enum_jednotky ej on ej.id = tt.jednotka LIMIT 10";
                     $result = mysqli_query($conn,$query);
                     $pocetriadkov = mysqli_num_rows($result);
                     if(!$result)
@@ -59,15 +58,14 @@ include "confs/head.php";
                     ?>
                       <tr>
                         <td>Teplota</td>
-                        <td> <?php echo $row["value"]?> </td>
-                        <td><?php echo $row["jednotka"]?> </td>
-                        <td> <?php echo $row["timestamp"]?> </td>
-                        <td> <?php echo $row["názov"]?> </td>
+                        <td> <?php echo $row["value"];?> </td>
+                        <td><?php echo $row["jednotka"];?> </td>
+                        <td> <?php echo $row["timestamp"];?> </td>
+                        <td> <?php echo $row["názov"];?> </td>
 
                       </tr>
                                          
                   <?php } ?>
-
                 </tbody>
               </table>
             </div>
