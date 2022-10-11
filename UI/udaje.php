@@ -2,9 +2,10 @@
 
 $conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
+$stranka = "udaje";
 include "confs/head.php";
 
-$active = 2;
+
 
 ?>
 
@@ -18,8 +19,7 @@ $active = 2;
                     <thead>
                          <tr>
                          <th>Merany atribut</th>
-                         <th>Hodnota</th>
-                         <th>Jednotka</th>
+                         <th>Namerana hodnota</th>
                          <th>Čas merania</th>
                          <th>Miesto merania</th>
                          </tr>
@@ -39,7 +39,12 @@ $active = 2;
                     {
                       if ($pocetriadkov == 0)
                       {
-                        echo "V prislusnej databaze sa nic nenaslo";
+                        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                        <strong>V prislusnej databaze sa nenachadzaju ziadne vysledky</strong>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>";
                       }
                     }
 
@@ -49,8 +54,7 @@ $active = 2;
                     ?>
                     <tr>
                          <td>Teplota</td>
-                         <td> <?php echo $row["value"];?> </td>
-                         <td><?php echo $row["jednotka"];?> </td>
+                         <td> <?php echo $row["value"]." ".$row["jednotka"];?> </td>
                          <td> <?php echo $row["timestamp"];?> </td>
                          <td> <?php echo $row["názov"];?> </td>              
                          <td>
