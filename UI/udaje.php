@@ -6,42 +6,63 @@ include "confs/head.php";
 
 ?>
 
-
-
-<div  class="container-fluid">
+<div  class="container-fluid mb-5">
     <div class="row">
         <div class="col">
-
+        <h1 class="text-center">Teplota</h1>
           <!-- Tabulka s 10 poslednymi hodnotami-->
             <div id="pricing" class="container-fluid">
-              <table class="table table-bordered table-striped text-center">
-                <thead>
-                  <tr>
-                    <th>Kedy sa meralo</th>
-                    <th>Teplota</th>
-                    <th>Vlhkost</th>
-                    <th>Tlak vzduchu</th>
-                    <th>Miesto merania</th>
-                    <th></th>
-                  </tr>
-                </thead>
+              <table class="table table-bordered text-center">
+                    <thead>
+                         <tr>
+                         <th>Merany atribut</th>
+                         <th>Hodnota</th>
+                         <th>Jednotka</th>
+                         <th>Čas merania</th>
+                         <th>Miesto merania</th>
+                         </tr>
+                    </thead>
+                    
+                    <tbody class="table-active">
+                    <?php
+                    $query = "SELECT tt.value, tt.timestamp, ej.jednotka, eo.názov from tbl_teplota tt Inner join enum_obce eo ON tt.miesto_merania =eo.kod INNER JOIN enum_jednotky ej on ej.id = tt.jednotka LIMIT 10";
+                    $result = mysqli_query($conn,$query);
+                    $pocetriadkov = mysqli_num_rows($result);
+                    if(!$result)
+                    {
+                      echo "ERR: neda sa vykonat prikaz";
+                    }
+                    
+                    else
+                    {
+                      if ($pocetriadkov == 0)
+                      {
+                        echo "V prislusnej databaze sa nic nenaslo";
+                      }
+                    }
 
-                <tbody>
+                    while ($row = mysqli_fetch_assoc($result))
+                    { 
+
+                    ?>
                     <tr>
-                         <td>15.9.2022</td>
-                         <td>25</td>
-                         <td>80</td>
-                         <td>1056</td>
-                         <td>Trnava</td>
+                         <td>Teplota</td>
+                         <td> <?php echo $row["value"];?> </td>
+                         <td><?php echo $row["jednotka"];?> </td>
+                         <td> <?php echo $row["timestamp"];?> </td>
+                         <td> <?php echo $row["názov"];?> </td>              
                          <td>
-                              <!-- Button informácie -->
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie">Informácie</button>
-                              <!-- Button Zmazat-->
-                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat">Zmazat údaj</button>
+                         <!-- Button informácie -->
+                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie">Informácie</button>
+                         <!-- Button Zmazat-->
+                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat">Zmazat údaj</button>
                          </td>
-                    </tr>
-                </tbody>
-              </table>
+                    </tr>  
+
+                    <?php } ?>
+               
+                    </tbody>
+               </table>
 
               <!--Informačné okno-->
                <div class="modal fade" id="informacie" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -85,10 +106,8 @@ include "confs/head.php";
                               </div>
                          </div>
                     </div>
-               </div>
-     
+               </div>  
             </div>
-            <div id = "jsclock" onload="hodiny()"></div>
         </div>
     </div>
 </div>
@@ -96,22 +115,3 @@ include "confs/head.php";
 <?php
 include "confs/footer.php";
 ?>
-
-<script>
-function hodiny() {
-  let date = new Date(); 
-  let hh = date.getHours();
-  let mm = date.getMinutes();
-  let ss = date.getSeconds();
-
-   hh = (hh < 10) ? "0" + hh : hh;
-   mm = (mm < 10) ? "0" + mm : mm;
-   ss = (ss < 10) ? "0" + ss : ss;
-    
-   let time = hh + ":" + mm + ":" + ss + " ";
-
-  document.getElementById("jsclock").innerText = time; 
-  let t = setTimeout(function(){ hodiny() }, 1000);
-}
-hodiny();
-</script>
