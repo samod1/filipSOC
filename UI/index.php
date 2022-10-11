@@ -28,7 +28,6 @@ include "confs/head.php";
                   <tr>
                     <th>Merany atribut</th>
                     <th>Hodnota</th>
-                    <th>Jednotka</th>
                     <th>Čas merania</th>
                     <th>Miesto merania</th>
                   </tr>
@@ -59,8 +58,7 @@ include "confs/head.php";
                     ?>
                       <tr>
                         <td>Teplota</td>
-                        <td> <?php echo $row["value"]?> </td>
-                        <td><?php echo $row["jednotka"]?> </td>
+                        <td> <?php echo $row["value"]." ". $row["jednotka"]?> </td>
                         <td> <?php echo $row["timestamp"]?> </td>
                         <td> <?php echo $row["názov"]?> </td>
 
