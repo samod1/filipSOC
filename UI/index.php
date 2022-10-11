@@ -42,14 +42,24 @@ include "confs/head.php";
                     $pocetriadkov = mysqli_num_rows($result);
                     if(!$result)
                     {
-                      echo "ERR: neda sa vykonat prikaz";
+                      echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                      <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query."
+                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                      </button>
+                    </div>";
                     }
                     
                     else
                     {
                       if ($pocetriadkov == 0)
                       {
-                        echo "V prislusnej databaze sa nic nenaslo";
+                        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>";
                       }
                     }
 
@@ -72,14 +82,24 @@ include "confs/head.php";
                     $pocetriadkov1 = mysqli_num_rows($result1);
                     if(!$result1)
                     {
-                      echo "ERR: neda sa vykonat prikaz";
+                      echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                      <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query1."
+                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                      </button>
+                    </div>";
                     }
                     
                     else
                     {
                       if ($pocetriadkov1 == 0)
                       {
-                        echo "V prislusnej databaze sa nic nenaslo";
+                        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>";
                       }
                     }
                     
@@ -98,31 +118,41 @@ include "confs/head.php";
 
                   <!--Vlhkost-->
                   <?php
-                    $query1 = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
-                    $result1 = mysqli_query($conn,$query1);
-                    $pocetriadkov1 = mysqli_num_rows($result1);
-                    if(!$result1)
+                    $query2 = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
+                    $result2 = mysqli_query($conn,$query1);
+                    $pocetriadkov2 = mysqli_num_rows($result1);
+                    if(!$result2)
                     {
-                      echo "ERR: neda sa vykonat prikaz";
+                      echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                      <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query2."
+                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                      </button>
+                    </div>";
                     }
                     
                     else
                     {
-                      if ($pocetriadkov1 == 0)
+                      if ($pocetriadkov2 == 0)
                       {
-                        echo "V prislusnej databaze sa nic nenaslo";
+                        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>";
                       }
                     }
 
-                    while ($row1 = mysqli_fetch_assoc($result1))
+                    while ($row2 = mysqli_fetch_assoc($result2))
                     { 
 
                     ?>
                       <tr>
                         <td>Vlhkost</td>
-                        <td> <?php echo $row1["value"]." ".$row1["jednotka"];?></td>
-                        <td> <?php echo $row1["timestamp"];?> </td>
-                        <td> <?php echo $row1["názov"];?> </td>
+                        <td> <?php echo $row2["value"]." ".$row2["jednotka"];?></td>
+                        <td> <?php echo $row2["timestamp"];?> </td>
+                        <td> <?php echo $row2["názov"];?> </td>
                       </tr>                                       
                   <?php } ?>
 

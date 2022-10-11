@@ -39,7 +39,12 @@ include "confs/head.php";
                     {
                       if ($pocetriadkov == 0)
                       {
-                        echo "V prislusnej databaze sa nic nenaslo";
+                        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                        <strong>V prislusnej databaze sa nenachadzaju ziadne vysledky</strong>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>";
                       }
                     }
 
