@@ -2,9 +2,10 @@
 
 $conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
+$stranka = "udaje";
 include "confs/head.php";
 
-$active = 2;
+
 
 ?>
 
@@ -18,8 +19,7 @@ $active = 2;
                     <thead>
                          <tr>
                          <th>Merany atribut</th>
-                         <th>Hodnota</th>
-                         <th>Jednotka</th>
+                         <th>Namerana hodnota</th>
                          <th>Čas merania</th>
                          <th>Miesto merania</th>
                          </tr>
@@ -49,8 +49,7 @@ $active = 2;
                     ?>
                     <tr>
                          <td>Teplota</td>
-                         <td> <?php echo $row["value"];?> </td>
-                         <td><?php echo $row["jednotka"];?> </td>
+                         <td> <?php echo $row["value"]." ".$row["jednotka"];?> </td>
                          <td> <?php echo $row["timestamp"];?> </td>
                          <td> <?php echo $row["názov"];?> </td>              
                          <td>

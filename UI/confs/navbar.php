@@ -13,16 +13,16 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item <?php if($active == 1){echo" active";} ?>">
+            <li class="nav-item <?php if($stranka == "index") {echo' active';} ?>">
               <a class="nav-link" href="index.php">Domov<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item <?php if($active == 3){echo" active";} ?>">
+            <li class="nav-item <?php if($stranka == 3) {echo' active';} ?>">
               <a class="nav-link" href="#">Grafy</a>
             </li>
-            <li class="nav-item <?php if($active == 2){echo" active";} ?>">
+            <li class="nav-item <?php if($stranka == "udaje") {echo' active';} ?>">
               <a class="nav-link" href="udaje.php">Udaje</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?php if($stranka == 4) {echo' active';}?>">
               <a class="nav-link" href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
             </li>
           </ul>

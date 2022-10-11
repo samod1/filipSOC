@@ -13,8 +13,9 @@
 
 $conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
+$stranka = "index";
 include "confs/head.php";
-$active = 1;
+
 ?>
 
 
@@ -58,8 +59,7 @@ $active = 1;
                     ?>
                       <tr>
                         <td>Teplota</td>
-                        <td> <?php echo $row["value"];?> </td>
-                        <td><?php echo $row["jednotka"];?> </td>
+                        <td> <?php echo $row["value"]." ".$row["jednotka"];?> </td>
                         <td> <?php echo $row["timestamp"];?> </td>
                         <td> <?php echo $row["názov"];?> </td>
                       </tr>                  
@@ -82,16 +82,15 @@ $active = 1;
                         echo "V prislusnej databaze sa nic nenaslo";
                       }
                     }
-
+                    
                     while ($row1 = mysqli_fetch_assoc($result1))
                     { 
 
                     ?>
                       <tr>
                         <td>Tlak</td>
-                        <td> <?php echo $row1["value"];?> </td>
-                        <td><?php echo $row1["jednotka"];?> </td>
-                        <td> <?php echo $row1["timestamp"];?> </td>
+                        <td> <?php echo $row1["value"]." ". $row1["jednotka"];?></td>
+                        <td> <?php echo $row1["timestamp"];?></td>
                         <td> <?php echo $row1["názov"];?> </td>
                       </tr>                                       
                   <?php } ?>
@@ -121,8 +120,7 @@ $active = 1;
                     ?>
                       <tr>
                         <td>Vlhkost</td>
-                        <td> <?php echo $row1["value"];?> </td>
-                        <td><?php echo $row1["jednotka"];?> </td>
+                        <td> <?php echo $row1["value"]." ".$row1["jednotka"];?></td>
                         <td> <?php echo $row1["timestamp"];?> </td>
                         <td> <?php echo $row1["názov"];?> </td>
                       </tr>                                       
