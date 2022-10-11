@@ -23,7 +23,7 @@ include "confs/head.php";
           <h1 class="text-center">Posledné namerané údaje</h1>
           <!-- Tabulka s nameranými hodnotami-->
             <div id="pricing" class="container-fluid">
-              <table class="table table-bordered table-striped text-center">
+              <table class="table table-bordered text-center">
                 <thead>
                   <tr>
                     <th>Merany atribut</th>
@@ -32,11 +32,10 @@ include "confs/head.php";
                     <th>Miesto merania</th>
                   </tr>
                 </thead>
-
-                <tbody>
-                  
+                <!--Teplota-->
+                <tbody class="table-active">
                     <?php
-                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id; ";
+                    $query = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
                     $result = mysqli_query($conn,$query);
                     $pocetriadkov = mysqli_num_rows($result);
                     if(!$result)
@@ -58,18 +57,79 @@ include "confs/head.php";
                     ?>
                       <tr>
                         <td>Teplota</td>
-                        <td> <?php echo $row["value"]." ". $row["jednotka"]?> </td>
-                        <td> <?php echo $row["timestamp"]?> </td>
-                        <td> <?php echo $row["názov"]?> </td>
+                        <td> <?php echo $row["value"];?> </td>
+                        <td><?php echo $row["jednotka"];?> </td>
+                        <td> <?php echo $row["timestamp"];?> </td>
+                        <td> <?php echo $row["názov"];?> </td>
+                      </tr>                  
+                  <?php } ?>
 
-                      </tr>
-                                         
+                  <!--Tlak-->
+                  <?php
+                    $query1 = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt  INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
+                    $result1 = mysqli_query($conn,$query1);
+                    $pocetriadkov1 = mysqli_num_rows($result1);
+                    if(!$result1)
+                    {
+                      echo "ERR: neda sa vykonat prikaz";
+                    }
+                    
+                    else
+                    {
+                      if ($pocetriadkov1 == 0)
+                      {
+                        echo "V prislusnej databaze sa nic nenaslo";
+                      }
+                    }
+
+                    while ($row1 = mysqli_fetch_assoc($result1))
+                    { 
+
+                    ?>
+                      <tr>
+                        <td>Tlak</td>
+                        <td> <?php echo $row1["value"];?> </td>
+                        <td><?php echo $row1["jednotka"];?> </td>
+                        <td> <?php echo $row1["timestamp"];?> </td>
+                        <td> <?php echo $row1["názov"];?> </td>
+                      </tr>                                       
+                  <?php } ?>
+
+
+                  <!--Vlhkost-->
+                  <?php
+                    $query1 = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
+                    $result1 = mysqli_query($conn,$query1);
+                    $pocetriadkov1 = mysqli_num_rows($result1);
+                    if(!$result1)
+                    {
+                      echo "ERR: neda sa vykonat prikaz";
+                    }
+                    
+                    else
+                    {
+                      if ($pocetriadkov1 == 0)
+                      {
+                        echo "V prislusnej databaze sa nic nenaslo";
+                      }
+                    }
+
+                    while ($row1 = mysqli_fetch_assoc($result1))
+                    { 
+
+                    ?>
+                      <tr>
+                        <td>Vlhkost</td>
+                        <td> <?php echo $row1["value"];?> </td>
+                        <td><?php echo $row1["jednotka"];?> </td>
+                        <td> <?php echo $row1["timestamp"];?> </td>
+                        <td> <?php echo $row1["názov"];?> </td>
+                      </tr>                                       
                   <?php } ?>
 
                 </tbody>
               </table>
             </div>
-            <div id = "jsclock" onload="hodiny()"></div>
         </div>
     </div>
 </div>
@@ -77,22 +137,3 @@ include "confs/head.php";
 <?php
 include "confs/footer.php";
 ?>
-
-<script>
-function hodiny() {
-  let date = new Date(); 
-  let hh = date.getHours();
-  let mm = date.getMinutes();
-  let ss = date.getSeconds();
-
-   hh = (hh < 10) ? "0" + hh : hh;
-   mm = (mm < 10) ? "0" + mm : mm;
-   ss = (ss < 10) ? "0" + ss : ss;
-    
-   let time = hh + ":" + mm + ":" + ss + " ";
-
-  document.getElementById("jsclock").innerText = time; 
-  let t = setTimeout(function(){ hodiny() }, 1000);
-}
-hodiny();
-</script>

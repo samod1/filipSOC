@@ -1,9 +1,8 @@
-<footer>
-  <div class="container-fluid bg-dark" style="position:fixed; bottom:0%;">
+<footer class="bg-dark text-center text-lg-start fixed-bottom">
     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info"></i></button>
-    <p class="text-right text-white"><?php echo exec("git log --pretty=%h -n1 HEAD"); ?></p>
-  </div>
+    <p class="text-center text-white"><?php echo exec("git log --pretty=%h -n1 HEAD"); ?></p>
 </footer>
+
 </body>
 </html>
 
