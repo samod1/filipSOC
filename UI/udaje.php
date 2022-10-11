@@ -4,6 +4,8 @@ $conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
 
+$active = 2;
+
 ?>
 
 <div  class="container-fluid mb-5">

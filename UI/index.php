@@ -14,6 +14,7 @@
 $conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
 include "confs/head.php";
+$active = 1;
 ?>
 
 
