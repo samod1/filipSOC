@@ -85,5 +85,5 @@ SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl
 
 
 
-
-
+/*Select z troch tabuliek*/
+Select tt.value ,ej.jednotka, eo.názov from tbl_teplota tt Inner join enum_obce eo ON tt.miesto_merania = eo.kod INNER JOIN enum_jednotky ej on ej.id = tt.jednotka  LIMIT 10

@@ -28,7 +28,6 @@ include "confs/head.php";
                   <tr>
                     <th>Merany atribut</th>
                     <th>Hodnota</th>
-                    <th>Jednotka</th>
                     <th>Čas merania</th>
                     <th>Miesto merania</th>
                   </tr>
@@ -95,6 +94,7 @@ include "confs/head.php";
                         <td> <?php echo $row1["názov"];?> </td>
                       </tr>                                       
                   <?php } ?>
+
 
                   <!--Vlhkost-->
                   <?php
