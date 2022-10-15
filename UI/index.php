@@ -168,13 +168,11 @@ include "confs/head.php";
 
               </div>
             </div>
-          </div>
-
-              
-            </div>
+          </div>   
         </div>
     </div>
 </div>
+
 
 <?php
 include "confs/footer.php";
