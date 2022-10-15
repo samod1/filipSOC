@@ -15,7 +15,7 @@ include "confs/head.php";
         <h1 class="text-center">Teplota</h1>
           <!-- Tabulka s 10 poslednymi hodnotami-->
             <div id="pricing" class="container-fluid">
-              <table class="table table-bordered text-center">
+              <table class="table table-hover table-bordered text-center">
                     <thead>
                          <tr>
                          <th>Merany atribut</th>
