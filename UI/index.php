@@ -108,7 +108,7 @@ include "confs/head.php";
 
                 ?>
                 <!--Zobrazovanie-->
-                <div class="card text-white bg-warning mb-4" style="max-width: 20rem;">
+                <div class="card text-white bg-success mb-4" style="max-width: 20rem;">
                   <div class="card-body text-center">
                     <div class="card-header"><h1 class="card-title"><?php echo $row_tlak["value"]." ". $row_tlak["jednotka"];?></h1></div>
                     <div class="card-body">
@@ -155,7 +155,7 @@ include "confs/head.php";
 
                 ?>
                 <!--zobrazovaie-->
-                <div class="card text-white bg-primary mb-4" style="max-width: 20rem;">
+                <div class="card text-white bg-info mb-4" style="max-width: 20rem;">
                   <div class="card-body text-center">
                     <div class="card-header"><h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1></div>
                     <div class="card-body">
