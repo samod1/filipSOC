@@ -5,7 +5,7 @@
         <p class="lead text-center">Zariadenie na zber meteorologických údajov</p>
       </div>
     </div>
-    <div class="text-center h5" id = "jsclock" onload="hodiny()"></div>
+
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,7 @@
               <a class="nav-link" href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
             </li>
           </ul>
+          <div class="text-white text-right font-weight-bold" id = "jsclock" onload="hodiny()"></div>
         </div>
       </nav>
 </div>
