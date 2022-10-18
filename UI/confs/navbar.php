@@ -16,7 +16,7 @@
             <li class="nav-item <?php if($stranka == "index") {echo' active';} ?>">
               <a class="nav-link" href="index.php">Domov<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item <?php if($stranka == 3) {echo' active';} ?>">
+            <li class="nav-item <?php if($stranka == "grafy") {echo' active';} ?>">
               <a class="nav-link" href="grafy.php">Grafy</a>
             </li>
             <li class="nav-item <?php if($stranka == "udaje") {echo' active';} ?>">

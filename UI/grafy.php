@@ -13,7 +13,7 @@
 
 $conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
-$stranka = "index";
+$stranka = "grafy";
 include "confs/head.php";
 
 ?>
@@ -23,7 +23,7 @@ include "confs/head.php";
     <h1>Grafy</h1>
 
 
-    
+
 <?php
     include "confs/footer.php";
 ?>
