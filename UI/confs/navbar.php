@@ -17,14 +17,14 @@
               <a class="nav-link" href="index.php">Domov<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item <?php if($stranka == 3) {echo' active';} ?>">
-              <a class="nav-link" href="#">Grafy</a>
+              <a class="nav-link" href="grafy.php">Grafy</a>
             </li>
             <li class="nav-item <?php if($stranka == "udaje") {echo' active';} ?>">
               <a class="nav-link" href="udaje.php">Udaje</a>
             </li>
-            <li class="nav-item <?php if($stranka == 4) {echo' active';}?>">
+            <!-- <li class="nav-item <?php if($stranka == 4) {echo' active';}?>">
               <a class="nav-link" href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
