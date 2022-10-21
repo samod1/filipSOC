@@ -66,7 +66,7 @@ $prsi = false;
                   <div class="card-body text-center">
                     <div class="card-header"><h1 class="card-title"><?php echo $row_teplota["value"]." ". $row_teplota["jednotka"];?></h1></div>
                     <div class="card-body">
-                    <h5 class="card-text "><?php echo $row_teplota["timestamp"];?></h5>
+                    <h5 class="card-text "><?php echo date("Y.m.d <br> H:i:s", strtotime($row_teplota["timestamp"]));?></h5>
                     <h5 class="card-text"><?php echo $row_teplota["názov"];?></h5>
                     </div>                   
                   </div>
@@ -114,7 +114,7 @@ $prsi = false;
                   <div class="card-body text-center">
                     <div class="card-header"><h1 class="card-title"><?php echo $row_tlak["value"]." ". $row_tlak["jednotka"];?></h1></div>
                     <div class="card-body">
-                    <h5 class="card-text "><?php echo $row_tlak["timestamp"];?></h5>
+                    <h5 class="card-text "><?php echo date("Y.m.d <br> H:i:s", strtotime($row_tlak["timestamp"]));?></h5>
                     <h5 class="card-text"><?php echo $row_tlak["názov"];?></h5>
                     </div>                   
                   </div>
@@ -161,7 +161,7 @@ $prsi = false;
                   <div class="card-body text-center">
                     <div class="card-header"><h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1></div>
                     <div class="card-body">
-                      <h5 class="card-text "><?php echo $row_vlhkost["timestamp"];?></h5>
+                      <h5 class="card-text "><?php echo date("Y.m.d <br> H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
                       <h5 class="card-text"><?php echo $row_vlhkost["názov"];?></h5>
                     </div>                   
                   </div>
