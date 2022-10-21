@@ -39,6 +39,7 @@ include "confs/head.php";
                                         <th>Namerana hodnota</th>
                                         <th>Čas merania</th>
                                         <th>Miesto merania</th>
+                                        <th>Akcia</th>
                                         </tr>
                                    </thead>
                                    
