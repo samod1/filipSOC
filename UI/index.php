@@ -169,6 +169,7 @@ $prsi = false;
               <?php } ?>
               </div>
 
+              <!--Karticka pre dazd-->
               <div class="col-sm">
                 <div class="card text-white bg-info mb-4 h-100" style="max-width: 20rem;">
                   <div class="card-body text-center">
