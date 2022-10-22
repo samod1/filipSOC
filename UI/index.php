@@ -16,7 +16,7 @@ $nazovTabu ="Filip Stredoskolska praca";
 $stranka = "index";
 include "confs/head.php";
 
-$prsi = false;
+$prsi = true;
 
 ?>
 
@@ -193,13 +193,9 @@ $prsi = false;
                   </div>
                 </div>    
               </div>
-
-              </div>
-            </div>
-          </div>   
+              
         </div>
     </div>
-</div>
 
 
 <?php
