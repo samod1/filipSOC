@@ -6,7 +6,6 @@ $stranka = "udaje";
 include "confs/head.php";
 
 
-
 ?>
 
 <div  class="container-fluid mb-5">
@@ -127,9 +126,19 @@ include "confs/head.php";
                                         </div>
                                    </tr>             
                                    <?php } ?>
-
                                    </tbody>
                               </table>
+
+                              <nav aria-label="Page">
+                                   <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                   </ul>
+                              </nav>
+
                          </div>
                     </div>
 
@@ -144,6 +153,7 @@ include "confs/head.php";
                                         <th>Namerana hodnota</th>
                                         <th>Čas merania</th>
                                         <th>Miesto merania</th>
+                                        <th>Akcia</th>
                                         </tr>
                                    </thead>
                                    
@@ -235,6 +245,17 @@ include "confs/head.php";
                                    </tbody>
                               </table>
                          </div>
+
+                         <nav aria-label="Page">
+                              <ul class="pagination">
+                                   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                   <li class="page-item"><a class="page-link" href="#1">1</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                              </ul>
+                         </nav>
+
                     </div>
 
                     <!--VLHKOST-->
@@ -248,6 +269,7 @@ include "confs/head.php";
                                         <th>Namerana hodnota</th>
                                         <th>Čas merania</th>
                                         <th>Miesto merania</th>
+                                        <th>Akcia</th>
                                         </tr>
                                    </thead>
                                    
@@ -339,7 +361,21 @@ include "confs/head.php";
                                    </tbody>
                               </table>
                          </div>
+
+                         <nav aria-label="Page">
+                              <ul class="pagination">
+                                   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                   <li class="page-item"><a class="page-link" href="#1">1</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                              </ul>
+                         </nav>               
+
                     </div>
+
+                    <div class="mb-5"></div>
+
                </div>     
           </div>
      </div>
