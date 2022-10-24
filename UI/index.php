@@ -16,6 +16,8 @@ $nazovTabu ="Filip Stredoskolska praca";
 $stranka = "index";
 include "confs/head.php";
 
+$prsi = true;
+
 ?>
 
 
@@ -60,11 +62,11 @@ include "confs/head.php";
                 {
                 ?>
                 <!--zobrazovaie-->
-                <div class="card text-white bg-danger mb-4" style="max-width: 20rem;">
+                <div class="card text-white bg-danger mb-4 h-100" style="max-width: 20rem;">
                   <div class="card-body text-center">
                     <div class="card-header"><h1 class="card-title"><?php echo $row_teplota["value"]." ". $row_teplota["jednotka"];?></h1></div>
                     <div class="card-body">
-                    <h5 class="card-text "><?php echo $row_teplota["timestamp"];?></h5>
+                    <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?></h5>
                     <h5 class="card-text"><?php echo $row_teplota["názov"];?></h5>
                     </div>                   
                   </div>
@@ -108,11 +110,11 @@ include "confs/head.php";
 
                 ?>
                 <!--Zobrazovanie-->
-                <div class="card text-white bg-success mb-4" style="max-width: 20rem;">
+                <div class="card text-white bg-success mb-4 h-100" style="max-width: 20rem;">
                   <div class="card-body text-center">
                     <div class="card-header"><h1 class="card-title"><?php echo $row_tlak["value"]." ". $row_tlak["jednotka"];?></h1></div>
                     <div class="card-body">
-                    <h5 class="card-text "><?php echo $row_tlak["timestamp"];?></h5>
+                    <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?></h5>
                     <h5 class="card-text"><?php echo $row_tlak["názov"];?></h5>
                     </div>                   
                   </div>
@@ -155,23 +157,45 @@ include "confs/head.php";
 
                 ?>
                 <!--zobrazovaie-->
-                <div class="card text-white bg-info mb-4" style="max-width: 20rem;">
+                <div class="card text-white bg-warning mb-4 h-100" style="max-width: 20rem;">
                   <div class="card-body text-center">
                     <div class="card-header"><h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1></div>
                     <div class="card-body">
-                    <h5 class="card-text "><?php echo $row_vlhkost["timestamp"];?></h5>
-                    <h5 class="card-text"><?php echo $row_vlhkost["názov"];?></h5>
+                      <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
+                      <h5 class="card-text"><?php echo $row_vlhkost["názov"];?></h5>
                     </div>                   
                   </div>
                 </div>                                     
               <?php } ?>
-
               </div>
-            </div>
-          </div>   
+
+              <!--Karticka pre dazd-->
+              <div class="col-sm">
+                <div class="card text-white bg-info mb-4 h-100" style="max-width: 20rem;">
+                  <div class="card-body text-center">
+                    <div class="card-header"><h1 class="card-title">Dážď</h1></div>
+                    <div class="card-body">
+                      <?php 
+                      if($prsi == true)
+                      {
+                        ?>
+                        <h1 class="card-text mt-4"><i class="fa fa-check" aria-hidden="true"></i><h1>
+                        <?php
+                      }
+                      elseif($prsi == false)
+                      {
+                        ?>
+                        <h1 class="card-text mt-4"><i class="fa fa-times" aria-hidden="true"></i><h1>
+                        <?php
+                      }
+                      ?>
+                    </div>                   
+                  </div>
+                </div>    
+              </div>
+              
         </div>
     </div>
-</div>
 
 
 <?php

@@ -6,7 +6,6 @@ $stranka = "udaje";
 include "confs/head.php";
 
 
-
 ?>
 
 <div  class="container-fluid mb-5">
@@ -39,12 +38,13 @@ include "confs/head.php";
                                         <th>Namerana hodnota</th>
                                         <th>Čas merania</th>
                                         <th>Miesto merania</th>
+                                        <th>Akcia</th>
                                         </tr>
                                    </thead>
                                    
                                    <tbody class="table-active">
                                    <?php
-                                   $query_teplota = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id LIMIT 10;";
+                                   $query_teplota = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON  tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tt.jednotka = ej.id ORDER BY id_merania DESC  LIMIT 10;";
                                    $result_teplota = mysqli_query($conn,$query_teplota);
                                    $pocetriadkov_teplota = mysqli_num_rows($result_teplota);
                                    if(!$result_teplota)
@@ -72,7 +72,7 @@ include "confs/head.php";
                                    <tr>
                                         <td>Teplota</td>
                                         <td> <?php echo $row_teplota["value"]." ".$row_teplota["jednotka"];?> </td>
-                                        <td> <?php echo $row_teplota["timestamp"];?> </td>
+                                        <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?> </td>
                                         <td> <?php echo $row_teplota["názov"];?> </td>              
                                         <td>
                                         <!-- Button informácie -->
@@ -126,9 +126,19 @@ include "confs/head.php";
                                         </div>
                                    </tr>             
                                    <?php } ?>
-
                                    </tbody>
                               </table>
+
+                              <nav aria-label="Page">
+                                   <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                   </ul>
+                              </nav>
+
                          </div>
                     </div>
 
@@ -143,12 +153,13 @@ include "confs/head.php";
                                         <th>Namerana hodnota</th>
                                         <th>Čas merania</th>
                                         <th>Miesto merania</th>
+                                        <th>Akcia</th>
                                         </tr>
                                    </thead>
                                    
                                    <tbody class="table-active">
                                    <?php
-                                   $query_tlak = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id LIMIT 10;";
+                                   $query_tlak = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id ORDER BY id_merania DESC LIMIT 10;";
                                    $result_tlak = mysqli_query($conn,$query_tlak);
                                    $pocetriadkov_tlak = mysqli_num_rows($result_tlak);
                                    if(!$result_tlak)
@@ -176,7 +187,7 @@ include "confs/head.php";
                                    <tr>
                                         <td>Tlak</td>
                                         <td> <?php echo $row_tlak["value"]." ".$row_tlak["jednotka"];?> </td>
-                                        <td> <?php echo $row_tlak["timestamp"];?> </td>
+                                        <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?> </td>
                                         <td> <?php echo $row_tlak["názov"];?> </td>              
                                         <td>
                                         <!-- Button informácie -->
@@ -234,6 +245,17 @@ include "confs/head.php";
                                    </tbody>
                               </table>
                          </div>
+
+                         <nav aria-label="Page">
+                              <ul class="pagination">
+                                   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                   <li class="page-item"><a class="page-link" href="#1">1</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                              </ul>
+                         </nav>
+
                     </div>
 
                     <!--VLHKOST-->
@@ -247,12 +269,13 @@ include "confs/head.php";
                                         <th>Namerana hodnota</th>
                                         <th>Čas merania</th>
                                         <th>Miesto merania</th>
+                                        <th>Akcia</th>
                                         </tr>
                                    </thead>
                                    
                                    <tbody class="table-active">
                                    <?php
-                                   $query_vlhkost = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod INNER JOIN filip_soc.enum_jednotky ej ON tv.jednotka = ej.id LIMIT 10;";
+                                   $query_vlhkost = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON  tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tv.jednotka = ej.id ORDER BY id_merania DESC LIMIT 10;";
                                    $result_vlhkost = mysqli_query($conn,$query_vlhkost);
                                    $pocetriadkov_vlhkost = mysqli_num_rows($result_vlhkost);
                                    if(!$result_vlhkost)
@@ -280,7 +303,7 @@ include "confs/head.php";
                                    <tr>
                                         <td>Vlhkost</td>
                                         <td> <?php echo $row_vlhkost["value"]." ".$row_vlhkost["jednotka"];?> </td>
-                                        <td> <?php echo $row_vlhkost["timestamp"];?> </td>
+                                        <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?> </td>
                                         <td> <?php echo $row_vlhkost["názov"];?> </td>              
                                         <td>
                                         <!-- Button informácie -->
@@ -338,7 +361,21 @@ include "confs/head.php";
                                    </tbody>
                               </table>
                          </div>
+
+                         <nav aria-label="Page">
+                              <ul class="pagination">
+                                   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                   <li class="page-item"><a class="page-link" href="#1">1</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                              </ul>
+                         </nav>               
+
                     </div>
+
+                    <div class="mb-5"></div>
+
                </div>     
           </div>
      </div>

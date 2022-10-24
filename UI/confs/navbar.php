@@ -26,7 +26,8 @@
               <a class="nav-link" href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
             </li> -->
           </ul>
-          <div class="text-white text-right font-weight-bold" id = "jsclock" onload="hodiny()"></div>
+          <div class="text-white text-right font-weight-bold mr-2" id = "jsclock" onload="hodiny()"></div>
+          <div class="text-white text-right font-weight-bold" id = "day_year" onload="hodiny()"></div>
         </div>
       </nav>
 </div>
@@ -48,6 +49,8 @@ function hodiny() {
    let time = hh + ":" + mm + ":" + ss + " ";
 
   document.getElementById("jsclock").innerText = time; 
+  document.getElementById('day_year').innerHTML = date.toDateString();
+
   let t = setTimeout(function(){ hodiny() }, 1000);
 }
 hodiny();
