@@ -22,9 +22,9 @@
             <li class="nav-item <?php if($stranka == "udaje") {echo' active';} ?>">
               <a class="nav-link" href="udaje.php">Udaje</a>
             </li>
-            <!-- <li class="nav-item <?php if($stranka == 4) {echo' active';}?>">
-              <a class="nav-link" href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
-            </li> -->
+            <li class="nav-item <?php if($stranka == "nastavenia") {echo' active';}?>">
+              <a class="nav-link" href="settings.php"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            </li>
           </ul>
           <div class="text-white text-right font-weight-bold mr-2" id = "jsclock" onload="hodiny()"></div>
           <div class="text-white text-right font-weight-bold" id = "day_year" onload="hodiny()"></div>
