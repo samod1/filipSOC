@@ -57,7 +57,6 @@
                 </button>
             </div>";
             }
-            
             else
             {
                 if ($pocetriadkov_obce == 0)
@@ -84,7 +83,7 @@
     <div class="row ml-1 mt-5">
         <button type="button" class="btn btn-primary p-3">Save</button>
     </div>
-    
+
 </div>
 
 <?php
