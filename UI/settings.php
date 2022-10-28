@@ -80,13 +80,10 @@
         </select>
     </div>
 
-        <!--Save-->
-        <div class="row ml-1 mt-5">
-            <button type="button" class="btn btn-primary p-3">Save</button>
-        </div>
-
+    <!--Save-->
+    <div class="row ml-1 mt-5">
+        <button type="button" class="btn btn-primary p-3">Save</button>
     </div>
-
     
 </div>
 
