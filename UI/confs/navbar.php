@@ -36,6 +36,12 @@
 
 
 <script>
+
+var dic = {
+
+
+};
+
 function hodiny() {
   let date = new Date(); 
   let hh = date.getHours();
@@ -48,8 +54,15 @@ function hodiny() {
     
    let time = hh + ":" + mm + ":" + ss + " ";
 
+  var options ={
+    weekday:"short",
+    year:"numeric",
+    month:"long",
+    day:"numeric"
+  }; 
+
   document.getElementById("jsclock").innerText = time; 
-  document.getElementById('day_year').innerHTML = date.toDateString();
+  document.getElementById('day_year').innerHTML = date.toLocaleDateString("sk-SK", options);
 
   let t = setTimeout(function(){ hodiny() }, 1000);
 }
