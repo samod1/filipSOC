@@ -30,5 +30,5 @@ for x in range(400):
     val = (hodnota, timeNow)
     cursor.execute(sql,val)
     mydb.commit()
-
+print("end")
 
