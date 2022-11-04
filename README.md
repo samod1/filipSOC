@@ -1,3 +1,6 @@
+
+[![.github/workflows/python-app.yml](https://github.com/samod1/filipSOC/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/samod1/filipSOC/actions/workflows/python-app.yml)
+
 # filipSOC
 ## Stredoskolska Odborna cinnost 
 
