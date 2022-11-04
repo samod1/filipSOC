@@ -4,6 +4,7 @@
 name: Python application
 
 on:
+<<<<<<< HEAD
   workflow_dispatch:
     inputs:
       logLevel:
@@ -24,6 +25,12 @@ on:
   push:
     branches:
       - "samod"
+=======
+  pull_request:
+     paths:
+      - BE
+      
+>>>>>>> refs/remotes/origin/samod
 
 permissions:
   contents: read
