@@ -4,10 +4,33 @@
 name: Python application
 
 on:
+<<<<<<< HEAD
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+
+  schedule:
+     - cron: "0 2 ** 1-5"
+  pull_request:
+     paths:
+      - BE
+  push:
+    branches:
+      - "samod"
+=======
   pull_request:
      paths:
       - BE
       
+>>>>>>> refs/remotes/origin/samod
 
 permissions:
   contents: read
