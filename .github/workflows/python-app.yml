@@ -4,11 +4,13 @@
 name: Python application
 
 on:
-  schedule:
-     - cron: "0 2 * * 1-5"
   pull_request:
      paths:
       - BE
+      
+  schedule:
+     - cron: "0 2 * * 1,5"
+  
 
 permissions:
   contents: read
