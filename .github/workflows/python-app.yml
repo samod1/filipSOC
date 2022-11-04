@@ -8,9 +8,6 @@ on:
      paths:
       - BE
       
-  schedule:
-     - cron: "0 2 * * 1,5"
-  
 
 permissions:
   contents: read
