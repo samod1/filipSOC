@@ -4,7 +4,7 @@
 name: Python application
 
 on:
-<<<<<<< HEAD
+
   workflow_dispatch:
     inputs:
       logLevel:
@@ -20,17 +20,16 @@ on:
   schedule:
      - cron: "0 2 ** 1-5"
   pull_request:
-     paths:
+    paths:
       - BE
+    branches:
+      - "main"
   push:
     branches:
       - "samod"
-=======
-  pull_request:
-     paths:
-      - BE
+
       
->>>>>>> refs/remotes/origin/samod
+
 
 permissions:
   contents: read
