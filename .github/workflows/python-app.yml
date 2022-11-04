@@ -18,7 +18,7 @@ on:
         - debug
 
   schedule:
-     - cron: "0 2 ** 1-5"
+     - cron: "0 2 * * 1-5"
   pull_request:
     paths:
       - BE
