@@ -4,8 +4,9 @@ import mysql.connector
 from datetime import datetime
 import random
 
+
 def randomNumberGenerator():
-    nahodnecislo = random.randint(0,40);
+    nahodnecislo = random.randint(0 , 40);
     return nahodnecislo
 
 mydb = mysql.connector.connect(
@@ -30,5 +31,4 @@ for x in range(400):
     val = (hodnota, timeNow)
     cursor.execute(sql,val)
     mydb.commit()
-print("end")
 
