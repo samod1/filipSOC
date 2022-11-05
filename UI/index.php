@@ -64,10 +64,11 @@ $prsi = true;
             <!--zobrazovaie-->
             <div class="card text-white bg-danger mb-4 h-100" style="max-width: 20rem;">
               <div class="card-body text-center">
-                <div class="card-header"><h1 class="card-title"><?php echo $row_teplota["value"]." ". $row_teplota["jednotka"];?></h1></div>
+                  <div class="card-header"><h1>Teplota</h1></div>
                 <div class="card-body">
-                <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?></h5>
-                <h5 class="card-text"><?php echo $row_teplota["názov"];?></h5>
+                  <h1 class="card-title"><?php echo $row_teplota["value"]." ". $row_teplota["jednotka"];?></h1>
+                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?></h5>
+                  <h5 class="card-text"><?php echo $row_teplota["názov"];?></h5>
                 </div>                   
               </div>
             </div>
@@ -112,10 +113,11 @@ $prsi = true;
             <!--Zobrazovanie-->
             <div class="card text-white bg-success mb-4 h-100" style="max-width: 20rem;">
               <div class="card-body text-center">
-                <div class="card-header"><h1 class="card-title"><?php echo $row_tlak["value"]." ". $row_tlak["jednotka"];?></h1></div>
+                  <div class="card-header"><h1>Tlak</h1></div>
                 <div class="card-body">
-                <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?></h5>
-                <h5 class="card-text"><?php echo $row_tlak["názov"];?></h5>
+                  <h1 class="card-title"><?php echo $row_tlak["value"]." ". $row_tlak["jednotka"];?></h1>
+                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?></h5>
+                  <h5 class="card-text"><?php echo $row_tlak["názov"];?></h5>
                 </div>                   
               </div>
             </div>                                    
@@ -159,8 +161,9 @@ $prsi = true;
             <!--zobrazovaie-->
             <div class="card text-white bg-warning mb-4 h-100" style="max-width: 20rem;">
               <div class="card-body text-center">
-                <div class="card-header"><h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1></div>
+                <div class="card-header"><h1>Vlhkost</h1></div>
                 <div class="card-body">
+                  <h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1>
                   <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
                   <h5 class="card-text"><?php echo $row_vlhkost["názov"];?></h5>
                 </div>                   
@@ -178,24 +181,24 @@ $prsi = true;
             $pocetriadkov_dazd = mysqli_num_rows($result_dazd);
             if(!$result_dazd)
             {
-              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-              <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query_dazd."
-              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>";
+                echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query_dazd."
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
             }
             
             else
             {
               if ($pocetriadkov_dazd == 0)
               {
-                echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                  <span aria-hidden='true'>&times;</span>
-                </button>
-              </div>";
+                  echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                  </button>
+                </div>";
               }
             }
 
@@ -234,6 +237,7 @@ $prsi = true;
       </div>     
   </div>
 </div>
+
 
 <?php
 include "confs/footer.php";
