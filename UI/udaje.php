@@ -60,7 +60,19 @@ include "confs/head.php";
                                         <!-- Button informácie -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_teplota["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_teplota["id_merania"];?>">Zmazat údaj</button>
+                                        <?php 
+                                             if($_GET["rola"] == "admin")
+                                             {
+                                                  ?>
+                                                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_teplota["id_merania"];?>">Zmazat údaj</button>
+                                                  <?php
+                                             }
+                                             else
+                                             {
+                                                  
+                                             }
+
+                                        ?>              
                                         </td>
 
                                         <!--Informačné okno-->
@@ -158,7 +170,20 @@ include "confs/head.php";
                                         <!-- Button informácie -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_tlak["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_tlak["id_merania"];?>">Zmazat údaj</button>
+                                        <?php 
+                                             if($_GET["rola"] == "admin")
+                                             {
+                                                  ?>
+                                                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_tlak["id_merania"];?>">Zmazat údaj</button>
+                                                  <?php
+                                             }
+                                             else
+                                             {
+                                                  
+                                             }
+
+                                        ?>     
+                                        
                                         </td>
 
                                         <!--Informačné okno-->
@@ -257,7 +282,19 @@ include "confs/head.php";
                                         <!-- Button informácie -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_vlhkost["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_vlhkost["id_merania"];?>">Zmazat údaj</button>
+                                        <?php 
+                                             if($_GET["rola"] == "admin")
+                                             {
+                                                  ?>
+                                                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_vlhkost["id_merania"];?>">Zmazat údaj</button>
+                                                  <?php
+                                             }
+                                             else
+                                             {
+                                                  
+                                             }
+
+                                        ?>     
                                         </td>
 
                                         <!--Informačné okno-->
