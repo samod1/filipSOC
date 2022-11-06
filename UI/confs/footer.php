@@ -1,4 +1,4 @@
-<footer class="bg-dark text-center text-lg-start mt-4">
+<footer class="bg-dark text-center text-lg-start mt-5">
     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info"></i></button>
     <p class="text-center text-white mb-0"><?php echo exec("git log --pretty=%h -n1 HEAD"); ?></p>
 </footer>
