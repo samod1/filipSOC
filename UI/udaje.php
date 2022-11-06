@@ -5,6 +5,8 @@ $nazovTabu ="Filip Stredoskolska praca";
 $stranka = "udaje";
 include "confs/head.php";
 
+
+//kontrola role
 if(isset($_GET["rola"]) && $_GET["rola"] == "admin")
 {
      $admin_mode = TRUE;
