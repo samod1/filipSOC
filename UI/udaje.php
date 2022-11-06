@@ -5,6 +5,15 @@ $nazovTabu ="Filip Stredoskolska praca";
 $stranka = "udaje";
 include "confs/head.php";
 
+if(isset($_GET["rola"]) && $_GET["rola"] == "admin")
+{
+     $admin_mode = TRUE;
+}
+else
+{
+     $_GET["rola"] = "user";
+     $admin_mode = FALSE;
+}
 
 ?>
 
@@ -61,17 +70,12 @@ include "confs/head.php";
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_teplota["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
                                         <?php 
-                                             if($_GET["rola"] == "admin")
+                                             if($admin_mode)
                                              {
                                                   ?>
                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_teplota["id_merania"];?>">Zmazat údaj</button>
                                                   <?php
                                              }
-                                             else
-                                             {
-                                                  
-                                             }
-
                                         ?>              
                                         </td>
 
@@ -171,17 +175,12 @@ include "confs/head.php";
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_tlak["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
                                         <?php 
-                                             if($_GET["rola"] == "admin")
+                                             if($admin_mode)
                                              {
                                                   ?>
                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_tlak["id_merania"];?>">Zmazat údaj</button>
                                                   <?php
                                              }
-                                             else
-                                             {
-                                                  
-                                             }
-
                                         ?>     
                                         
                                         </td>
@@ -283,17 +282,12 @@ include "confs/head.php";
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_vlhkost["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
                                         <?php 
-                                             if($_GET["rola"] == "admin")
+                                             if($admin_mode)
                                              {
                                                   ?>
                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_vlhkost["id_merania"];?>">Zmazat údaj</button>
                                                   <?php
                                              }
-                                             else
-                                             {
-                                                  
-                                             }
-
                                         ?>     
                                         </td>
 
