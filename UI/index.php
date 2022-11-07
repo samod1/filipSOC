@@ -35,28 +35,6 @@ $prsi = true;
             $query_teplota = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
             $result_teplota = mysqli_query($conn,$query_teplota);
             $pocetriadkov_teplota = mysqli_num_rows($result_teplota);
-            if(!$result_teplota)
-            {
-              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-              <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query_teplota."
-              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>";
-            }
-            
-            else
-            {
-              if ($pocetriadkov_teplota == 0)
-              {
-                echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                  <span aria-hidden='true'>&times;</span>
-                </button>
-              </div>";
-              }
-            }
 
             while ($row_teplota = mysqli_fetch_assoc($result_teplota))
             {
@@ -64,10 +42,11 @@ $prsi = true;
             <!--zobrazovaie-->
             <div class="card text-white bg-danger mb-4 h-100" style="max-width: 20rem;">
               <div class="card-body text-center">
-                <div class="card-header"><h1 class="card-title"><?php echo $row_teplota["value"]." ". $row_teplota["jednotka"];?></h1></div>
+                  <div class="card-header"><h1>Teplota</h1></div>
                 <div class="card-body">
-                <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?></h5>
-                <h5 class="card-text"><?php echo $row_teplota["názov"];?></h5>
+                  <h1 class="card-title"><?php echo $row_teplota["value"]." ". $row_teplota["jednotka"];?></h1>
+                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?></h5>
+                  <h5 class="card-text"><?php echo $row_teplota["názov"];?></h5>
                 </div>                   
               </div>
             </div>
@@ -82,29 +61,7 @@ $prsi = true;
             $query_tlak = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt  INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
             $result_tlak = mysqli_query($conn,$query_tlak);
             $pocetriadkov_tlak = mysqli_num_rows($result_tlak);
-            if(!$result_tlak)
-            {
-              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-              <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query_tlak."
-              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>";
-            }
-            
-            else
-            {
-              if ($pocetriadkov_tlak == 0)
-              {
-                echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                  <span aria-hidden='true'>&times;</span>
-                </button>
-              </div>";
-              }
-            }
-            
+
             while ($row_tlak = mysqli_fetch_assoc($result_tlak))
             { 
 
@@ -112,10 +69,11 @@ $prsi = true;
             <!--Zobrazovanie-->
             <div class="card text-white bg-success mb-4 h-100" style="max-width: 20rem;">
               <div class="card-body text-center">
-                <div class="card-header"><h1 class="card-title"><?php echo $row_tlak["value"]." ". $row_tlak["jednotka"];?></h1></div>
+                  <div class="card-header"><h1>Tlak</h1></div>
                 <div class="card-body">
-                <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?></h5>
-                <h5 class="card-text"><?php echo $row_tlak["názov"];?></h5>
+                  <h1 class="card-title"><?php echo $row_tlak["value"]." ". $row_tlak["jednotka"];?></h1>
+                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?></h5>
+                  <h5 class="card-text"><?php echo $row_tlak["názov"];?></h5>
                 </div>                   
               </div>
             </div>                                    
@@ -129,28 +87,6 @@ $prsi = true;
             $query_vlhkost = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
             $result_vlhkost = mysqli_query($conn,$query_vlhkost);
             $pocetriadkov_vlhkost = mysqli_num_rows($result_vlhkost);
-            if(!$result_vlhkost)
-            {
-              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-              <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query_vlhkost."
-              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>";
-            }
-            
-            else
-            {
-              if ($pocetriadkov_vlhkost == 0)
-              {
-                echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                  <span aria-hidden='true'>&times;</span>
-                </button>
-              </div>";
-              }
-            }
 
             while ($row_vlhkost = mysqli_fetch_assoc($result_vlhkost))
             { 
@@ -159,8 +95,9 @@ $prsi = true;
             <!--zobrazovaie-->
             <div class="card text-white bg-warning mb-4 h-100" style="max-width: 20rem;">
               <div class="card-body text-center">
-                <div class="card-header"><h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1></div>
+                <div class="card-header"><h1>Vlhkost</h1></div>
                 <div class="card-body">
+                  <h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1>
                   <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
                   <h5 class="card-text"><?php echo $row_vlhkost["názov"];?></h5>
                 </div>                   
@@ -176,28 +113,6 @@ $prsi = true;
             $query_dazd = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov FROM filip_soc.tbl_dazd td INNER JOIN filip_soc.enum_obce eo ON  td.miesto_merainia = eo.kod;";
             $result_dazd = mysqli_query($conn,$query_dazd);
             $pocetriadkov_dazd = mysqli_num_rows($result_dazd);
-            if(!$result_dazd)
-            {
-              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-              <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query_dazd."
-              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>";
-            }
-            
-            else
-            {
-              if ($pocetriadkov_dazd == 0)
-              {
-                echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                  <span aria-hidden='true'>&times;</span>
-                </button>
-              </div>";
-              }
-            }
 
             while ($row_dazd = mysqli_fetch_assoc($result_dazd))
             { 
@@ -234,6 +149,7 @@ $prsi = true;
       </div>     
   </div>
 </div>
+
 
 <?php
 include "confs/footer.php";

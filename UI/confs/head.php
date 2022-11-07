@@ -18,7 +18,7 @@
     </head>
     <body onload="hodiny()">
         
-        <?php 
+        <?php
         $conn = "";
         include "navbar.php";
         echo "<div class='container-fluid'>";

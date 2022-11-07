@@ -33,15 +33,8 @@
 </div>
 <br>
 
-
-
 <script>
-
-var dic = {
-
-
-};
-
+  
 function hodiny() {
   let date = new Date(); 
   let hh = date.getHours();

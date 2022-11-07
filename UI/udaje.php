@@ -6,6 +6,17 @@ $stranka = "udaje";
 include "confs/head.php";
 
 
+//kontrola role
+if(isset($_GET["rola"]) && $_GET["rola"] == "admin")
+{
+     $admin_mode = TRUE;
+}
+else
+{
+     $_GET["rola"] = "user";
+     $admin_mode = FALSE;
+}
+
 ?>
 
 <div  class="container-fluid mb-5">
@@ -47,27 +58,9 @@ include "confs/head.php";
                                    $query_teplota = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON  tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tt.jednotka = ej.id ORDER BY id_merania DESC  LIMIT 10;";
                                    $result_teplota = mysqli_query($conn,$query_teplota);
                                    $pocetriadkov_teplota = mysqli_num_rows($result_teplota);
-                                   if(!$result_teplota)
-                                   {
-                                   echo "ERR: neda sa vykonat prikaz";
-                                   }
-                                   
-                                   else
-                                   {
-                                   if ($pocetriadkov_teplota == 0)
-                                   {
-                                   echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                                   <strong>V prislusnej databaze sa nenachadzaju ziadne vysledky</strong>
-                                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                        <span aria-hidden='true'>&times;</span>
-                                   </button>
-                                   </div>";
-                                   }
-                                   }
 
                                    while ($row_teplota = mysqli_fetch_assoc($result_teplota))
                                    { 
-
                                    ?>
                                    <tr>
                                         <td>Teplota</td>
@@ -78,7 +71,14 @@ include "confs/head.php";
                                         <!-- Button informácie -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_teplota["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_teplota["id_merania"];?>">Zmazat údaj</button>
+                                        <?php 
+                                             if($admin_mode)
+                                             {
+                                                  ?>
+                                                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_teplota["id_merania"];?>">Zmazat údaj</button>
+                                                  <?php
+                                             }
+                                        ?>              
                                         </td>
 
                                         <!--Informačné okno-->
@@ -162,24 +162,7 @@ include "confs/head.php";
                                    $query_tlak = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id ORDER BY id_merania DESC LIMIT 10;";
                                    $result_tlak = mysqli_query($conn,$query_tlak);
                                    $pocetriadkov_tlak = mysqli_num_rows($result_tlak);
-                                   if(!$result_tlak)
-                                   {
-                                   echo "ERR: neda sa vykonat prikaz";
-                                   }
-                                   
-                                   else
-                                   {
-                                   if ($pocetriadkov_tlak == 0)
-                                   {
-                                   echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                                   <strong>V prislusnej databaze sa nenachadzaju ziadne vysledky</strong>
-                                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                        <span aria-hidden='true'>&times;</span>
-                                   </button>
-                                   </div>";
-                                   }
-                                   }
-
+                                  
                                    while ($row_tlak = mysqli_fetch_assoc($result_tlak))
                                    { 
 
@@ -193,7 +176,15 @@ include "confs/head.php";
                                         <!-- Button informácie -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_tlak["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_tlak["id_merania"];?>">Zmazat údaj</button>
+                                        <?php 
+                                             if($admin_mode)
+                                             {
+                                                  ?>
+                                                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_tlak["id_merania"];?>">Zmazat údaj</button>
+                                                  <?php
+                                             }
+                                        ?>     
+                                        
                                         </td>
 
                                         <!--Informačné okno-->
@@ -278,24 +269,7 @@ include "confs/head.php";
                                    $query_vlhkost = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON  tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tv.jednotka = ej.id ORDER BY id_merania DESC LIMIT 10;";
                                    $result_vlhkost = mysqli_query($conn,$query_vlhkost);
                                    $pocetriadkov_vlhkost = mysqli_num_rows($result_vlhkost);
-                                   if(!$result_vlhkost)
-                                   {
-                                   echo "ERR: neda sa vykonat prikaz";
-                                   }
-                                   
-                                   else
-                                   {
-                                   if ($pocetriadkov_vlhkost == 0)
-                                   {
-                                   echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                                   <strong>V prislusnej databaze sa nenachadzaju ziadne vysledky</strong>
-                                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                        <span aria-hidden='true'>&times;</span>
-                                   </button>
-                                   </div>";
-                                   }
-                                   }
-
+                                  
                                    while ($row_vlhkost = mysqli_fetch_assoc($result_vlhkost))
                                    { 
 
@@ -309,7 +283,14 @@ include "confs/head.php";
                                         <!-- Button informácie -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_vlhkost["id_merania"];?>">Informácie</button>
                                         <!-- Button Zmazat-->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_vlhkost["id_merania"];?>">Zmazat údaj</button>
+                                        <?php 
+                                             if($admin_mode)
+                                             {
+                                                  ?>
+                                                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_vlhkost["id_merania"];?>">Zmazat údaj</button>
+                                                  <?php
+                                             }
+                                        ?>     
                                         </td>
 
                                         <!--Informačné okno-->
