@@ -89,6 +89,7 @@
         <!--Senzory-->
         <div class="col-sm">
             <h1 class="display-4">Senzory</h1>
+            
             <!--ADD Senzor-->
             <button type="button" class="btn btn-primary p-3 pull-right mb-3" data-toggle="modal" data-target="#ADD_sensor">Pridat</button>
             
