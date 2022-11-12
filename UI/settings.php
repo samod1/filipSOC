@@ -111,7 +111,7 @@
                             <input type="text" name="id_sensor" class="form-control" aria-describedby="id_sensor">
                         </div>
 
-                        <!--ID_senzoru-->
+                        <!--Vyuzitie-->
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Vyuzitie</span>
