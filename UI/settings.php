@@ -4,9 +4,6 @@
     $nazovTabu ="Filip Stredoskolska praca";
     $stranka = "nastavenia";
     include "confs/head.php";
-
-    $prsi = true;
-
 ?>
 
 
@@ -94,7 +91,7 @@
             <button type="button" class="btn btn-primary p-3 pull-right mb-3" data-toggle="modal" data-target="#ADD_sensor">Pridat</button>
             
             <!--modalne okno add-->
-            <div class="modal fade" id="ADD_sensor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade bd-example-modal-lg" id="ADD_sensor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -104,25 +101,44 @@
                             </button>
                         </div>
                         <!--ID_senzoru-->
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Názov senzoru</span>
+                        <form method="post">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Názov senzoru</span>
+                                </div>
+                                <input type="text" name="id_sensor" id="id_sensor" class="form-control" aria-describedby="id_sensor">
                             </div>
-                            <input type="text" name="id_sensor" class="form-control" aria-describedby="id_sensor">
-                        </div>
 
-                        <!--Vyuzitie-->
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Vyuzitie</span>
+                            <!--Vyuzitie-->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Vyuzitie</span>
+                                </div>
+                                <input type="text" name="function" id="function" class="form-control" aria-describedby="function_sensor">
                             </div>
-                            <input type="text" name="id_sensor" class="form-control" aria-describedby="use_sensor">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal">Pridať</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" name="poslat" id="poslat" class="btn btn-primary" data-dismiss="modal">Odoslať</button>
+                            </div>
 
+                            <?php
+                            
+                                if(isset($_POST["poslat"]))
+                                    {  
+                                        $id = 0;
+                                
+                                        $querry_send = "INSERT INTO tbl_sensors (id,sensor_id,pouzitie_senzoru) VALUES (?,?,?);";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        mysqli_stmt_prepare($stmt,$querry_send);
+                                        mysqli_stmt_bind_param($stmt,'iss', $_POST["id_sensor"], $_POST["function"]);
+                                        mysqli_stmt_execute($stmt);
+                                        mysqli_stmt_close($stmt);
+                                        mysqli_close($conn);
+
+                                    }  
+                            ?>
+
+                        </form>
                     </div>
                 </div>
             </div>
