@@ -115,26 +115,21 @@
                                     <span class="input-group-text" id="basic-addon1">Vyuzitie</span>
                                 </div>
                                 <input type="text" name="function" id="function" class="form-control" aria-describedby="function_sensor">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" name="poslat" id="poslat" class="btn btn-primary" data-dismiss="modal">Odoslať</button>
-                            </div>
+                                <br>
+                                <input type="submit" name="poslat" id="poslat" class="btn btn-primary" value="Odoslať">
 
+                            </div>
                             <?php
                             
                                 if(isset($_POST["poslat"]))
-                                    {  
+                                    {
                                         $id = 0;
-                                
-                                        $querry_send = "INSERT INTO tbl_sensors (id,sensor_id,pouzitie_senzoru) VALUES (?,?,?);";
+                                        $query_send = "INSERT INTO tbl_sensors (id,sensor_id,pouzitie_senzoru) VALUES (?,?,?);";
                                         $stmt = mysqli_stmt_init($conn);
-                                        mysqli_stmt_prepare($stmt,$querry_send);
-                                        mysqli_stmt_bind_param($stmt,'iss', $_POST["id_sensor"], $_POST["function"]);
+                                        mysqli_stmt_prepare($stmt,$query_send);
+                                        mysqli_stmt_bind_param($stmt,'iss', $id, $_POST["id_sensor"], $_POST["function"]);
                                         mysqli_stmt_execute($stmt);
                                         mysqli_stmt_close($stmt);
-                                        mysqli_close($conn);
-
                                     }  
                             ?>
 
