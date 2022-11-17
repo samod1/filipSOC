@@ -40,46 +40,35 @@
                 <br>
             </div>    
 
+            <!--Miesto merania-->
+            <h4 class="display-5 mb-0">Miesto merania:<br></h3>
             <div class="input-group mb-3">
-                <!--Miesto merania-->
-                <h4 class="display-5 mb-0">Miesto merania: &nbsp;</h3>
-                <select class="form-select" aria-label="Jednotky">
-                    <?php
-                    $query_obce = "SELECT kód,názov FROM filip_soc.enum_okres";
-                    $result_obce = mysqli_query($conn,$query_obce);
-                    $pocetriadkov_obce = mysqli_num_rows($result_obce);
-                    if(!$result_obce)
-                    {
-                        echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        <strong>ERR:</strong> Prikaz SQL sa neda vykonat ".$query_obce."
-                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                        </button>
-                    </div>";
-                    }
-                    else
-                    {
-                        if ($pocetriadkov_obce == 0)
-                        {
-                        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                            <span aria-hidden='true'>&times;</span>
-                        </button>
-                        </div>";
-                        }
-                    }
+                <h5 class="display-5 mb-0">Okres: &nbsp;</h5>
+                <select class="form-select" name="okres" id="okres" aria-label="Okres" onchange="okres_id()" required>
+                <?php
+                    $query_okres = "SELECT * FROM filip_soc.enum_okres eo WHERE eo.`kód krajiny` = '703';";
+                    $result_okres = mysqli_query($conn,$query_okres);
+                    $pocetriadkov_okres = mysqli_num_rows($result_okres);
                     
-                    while ($row_obce = mysqli_fetch_assoc($result_obce))
+                    while ($row_okres = mysqli_fetch_assoc($result_okres))
                     { 
                     ?>
                         <!--vytvaranie moznosti-->
-                        <option value="<?php echo $row_obce["kód"];?>"> <?php echo $row_obce["názov"];?> </option>
+                        <option value="<?php echo $row_okres["kód"];?>"> <?php echo $row_okres["názov"];?> </option>
+
                     <?php } ?>
+
                 </select>
             </div> 
-                <!--Save-->
-                <button type="button" class="btn btn-primary p-3">Save</button>
+
+            <div class="input-group mb-3">
+                <h5 class="display-5 mb-0">Obec: &nbsp;</h5>
+                <select class="form-select" name="obec" id="obec" aria-label="Obec" required></select>
+                    <option ></option>
+            </div> 
+
+            <!--Save-->    
+            <button type="button" class="btn btn-primary p-3">Save</button>
           
         </div>
 
@@ -164,10 +153,12 @@
 
                 </tbody>
             </table>
+
         </div>
 
     </div>
 </div>
+
 
 <?php
     include "confs/footer.php";
