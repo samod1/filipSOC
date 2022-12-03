@@ -41,9 +41,9 @@
             </div>    
 
             <!--Miesto merania-->
-            <h4 class="display-5 mb-0">Miesto merania:<br></h3>
+            <h4 class="display-5 mb-3">Miesto merania:<br></h3>
             <div class="input-group mb-3">
-                <h5 class="display-5 mb-0">Okres: &nbsp;</h5>
+                <h5 class="display-5 mb-0 mt-1">Okres: &nbsp;</h5>
                 <select class="form-select" name="okres" id="okres" aria-label="Okres" onchange="okres_id()" required>
                 <?php
                     $query_okres = "SELECT * FROM filip_soc.enum_okres eo WHERE eo.`kód krajiny` = '703';";
@@ -62,7 +62,7 @@
             </div> 
 
             <div class="input-group mb-3">
-                <h5 class="display-5 mb-0">Obec: &nbsp;</h5>
+                <h5 class="display-5">Obec: &nbsp;</h5>
                 <select class="form-select" name="obec" id="obec" aria-label="Obec" required></select>
                     <option ></option>
             </div> 
@@ -111,15 +111,15 @@
                             <?php
                             
                                 if(isset($_POST["poslat"]))
-                                    {
-                                        $id = 0;
-                                        $query_send = "INSERT INTO tbl_sensors (id,sensor_id,pouzitie_senzoru) VALUES (?,?,?);";
-                                        $stmt = mysqli_stmt_init($conn);
-                                        mysqli_stmt_prepare($stmt,$query_send);
-                                        mysqli_stmt_bind_param($stmt,'iss', $id, $_POST["id_sensor"], $_POST["function"]);
-                                        mysqli_stmt_execute($stmt);
-                                        mysqli_stmt_close($stmt);
-                                    }  
+                                {
+                                    $id = 0;
+                                    $query_send = "INSERT INTO tbl_sensors (id,sensor_id,pouzitie_senzoru) VALUES (?,?,?);";
+                                    $stmt = mysqli_stmt_init($conn);
+                                    mysqli_stmt_prepare($stmt,$query_send);
+                                    mysqli_stmt_bind_param($stmt,'iss', $id, $_POST["id_sensor"], $_POST["function"]);
+                                    mysqli_stmt_execute($stmt);
+                                    mysqli_stmt_close($stmt);
+                                }  
                             ?>
 
                         </form>
@@ -155,11 +155,10 @@
             </table>
 
         </div>
-
     </div>
 </div>
 
 
-<?php
+<?php                       
     include "confs/footer.php";
 ?>
