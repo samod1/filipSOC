@@ -66,6 +66,7 @@
                     <h5 class="display-5">Obec: &nbsp;</h5>
                     <select class="form-select" name="obec" id="obec" aria-label="Obec" required></select>
                     <?php
+
                         /*$okr = $_POST["okres"];
 
                         $query_obce = "SELECT * FROM filip_soc.enum_obce eo2 WHERE eo2.`kód okresu` = 101 ;";
