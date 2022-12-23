@@ -67,7 +67,7 @@
                     <select class="form-select" name="obec" id="obec" aria-label="Obec" required>
                     <?php
 
-                        $okr = 101;
+                        $okr = 703;
 
                         $query_obce = "SELECT kod,názov FROM filip_soc.enum_obce eo2 WHERE eo2.`kód okresu` = $okr";
                         $result_obce = mysqli_query($conn,$query_obce);
@@ -89,6 +89,7 @@
 
                 <!--Posielanie udajov do tbl_settings-->
                 <!--tento shit nefunguje-->
+                <!--Edit sql-->
                 <?php 
                     if(isset($_POST['save']))
                     {
@@ -139,21 +140,15 @@
                                     <span class="input-group-text" id="basic-addon1">Vyuzitie</span>
                                 </div>
                                     <input type="text" name="function" id="function" class="form-control" aria-describedby="function_sensor">
-                                    <input type="submit" name="poslat" id="poslat" class="btn btn-primary" value="Odoslať">
+                                
                             </div>
+                            <input type="submit" name="poslat" id="poslat" class="btn btn-primary">
+
                             <?php
-                            
                                 if(isset($_POST["poslat"]))
                                 {
-                                    $id = 0;
-                                    $query_send = "INSERT INTO tbl_sensors (id,sensor_id,pouzitie_senzoru) VALUES (?,?,?);";
-                                    $stmt = mysqli_stmt_init($conn);
-                                    mysqli_stmt_prepare($stmt,$query_send);
-                                    mysqli_stmt_bind_param($stmt,'iss', $id, $_POST["id_sensor"], $_POST["function"]);
-                                    mysqli_stmt_execute($stmt);
-                                    mysqli_stmt_close($stmt);
-
-                                }  
+                                    include "confs/send_sensor_data.php";
+                                }
                             ?>
 
                         </form>
