@@ -13,7 +13,7 @@
             <h1 class="display-4">Nastavenia</h1>
             <br>
             
-            <form action="" method="post">
+            <form action="settings.php" method="POST">
                 <div class="input-group mb-3">
                     <!--Jednotky-->
                     <h4 class="display-5 mb-0">Jednotky: &nbsp;</h3>
@@ -85,24 +85,21 @@
                 </div> 
 
                 <!--Save-->    
-                <button type="button" name="save" id="save" class="btn btn-primary p-3">Save</button>
+                <input type="submit" name="save" id="save" class="btn btn-primary p-3">
 
                 <!--Posielanie udajov do tbl_settings-->
-                <!--tento shit nefunguje-->
                 <!--Edit sql-->
                 <?php 
-                    if(isset($_POST['save']))
+                    if(isset($_POST["save"]))
                     {
-
-                        $id = 0;
-                        $query_save_setings = "INSERT INTO filip_soc.tbl_settings(hod_format,jednotky,miesto_merania) VALUES (?,?,?,?);";
-                        $stmt = mysqli_stmt_init($conn);
-                        mysqli_stmt_prepare($stmt,$query_save_setings);
-                        mysqli_stmt_bind_param($stmt,'iisi', $id, $_POST["hod_format"], $_POST["jednotky"], "703");
-                        mysqli_stmt_execute($stmt);
-                        mysqli_stmt_close($stmt);
-
+                        $hod_format = $_POST["hodformat"];
+                        $jednotky = $_POST["jednotky"];
+                   
+                        $query_save_setings = "UPDATE filip_soc.tbl_settings SET hod_format = $hod_format, jednotky = $jednotky WHERE id_nastavenia = 8;";
+                        $result_settings= mysqli_query($conn,$query_save_setings);
+                   
                     }  
+
                 ?>
             </form>
           
@@ -126,7 +123,7 @@
                             </button>
                         </div>
                         <!--ID_senzoru-->
-                        <form action="" method="post">
+                        <form action="" method="POST">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Názov senzoru</span>
