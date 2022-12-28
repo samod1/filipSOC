@@ -19,7 +19,7 @@ prijmatel="samuel.domin@samod.sk";
 
 def posliEmail(server,port,sender,password,recipient):
     message = MIMEMultipart("alternative")
-    message["Subject"] = "Varovanie vysoka teplota"
+    message["Subject"] = "Varovanie prsanie"
     message["From"] = sender
     message["To"] = recipient
     html = """\
@@ -41,28 +41,23 @@ def posliEmail(server,port,sender,password,recipient):
 
 def overenieTeploty (maximalna, namerana):
     if(namerana > maximalna):
-        posliEmail(SMTPserver,port,posielatel,heslo,prijmatel);
+        posliEmail(SMTPserver,port,posielatel,heslo,prijmatel)
     else:
-        print("teplota OK");
-
-
-def randomNumberGenerator():
-    nahodnecislo = random.randint(0,40);
-    return nahodnecislo
+        print("neprsi")
 
 
 #main part of programm
 
-maximalna_pripustna_teplota = 35;
-print("Maximalna pripustna teplota", maximalna_pripustna_teplota);
-x=1;
+maximalna_pripustna_teplota = 35
+print("Maximalna pripustna teplota", maximalna_pripustna_teplota)
+x=1
 
 while True:
 
-    namerana_teplota= randomNumberGenerator();
-    print(namerana_teplota);
-    overenieTeploty(maximalna_pripustna_teplota,namerana_teplota);
-    time.sleep(7200);
+    namerana_teplota= randomNumberGenerator()
+    print(namerana_teplota)
+    overenieTeploty(maximalna_pripustna_teplota,namerana_teplota)
+    time.sleep(7200)
     
 
     
