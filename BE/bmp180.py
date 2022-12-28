@@ -31,7 +31,13 @@ altitude = bmp.readAltitude()
 # pressure level.  For example, if the current pressure level is 1023.50 hPa
 # enter 102350 since we include two decimal places in the integer value
 # altitude = bmp.readAltitude(102350)
- 
+#FIXME spravne posielanie tlaku
 print ("Temperature: %.2f C" % temp)
 print ("Pressure:    %.2f hPa" % (pressure / 100.0))
 print ("Altitude:    %.2f" % altitude)
+
+
+#TODO vkladat hodnoty do databazy
+#TODO zmazat udaje v databaze
+#HACK ak teplota presiahne nejaku konkretnu hodnotu zavolat alarmovu sluzbu, ktora posle mail o nefunkcnosti
+#
