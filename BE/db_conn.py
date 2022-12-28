@@ -5,6 +5,7 @@ from datetime import datetime
 import random
 
 
+
 def randomNumberGenerator():
     nahodnecislo = random.randint(0 , 40);
     return nahodnecislo
@@ -22,7 +23,7 @@ if mydb.is_connected():
 
         cursor=mydb.cursor()
 
-for x in range(400):
+for x in range(30):
     sql= "INSERT INTO filip_soc.tbl_teplota (value, `timestamp`, miesto_merania, jednotka) VALUES(%s, %s, 500011, 2);"
     now = datetime.now()
     timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")

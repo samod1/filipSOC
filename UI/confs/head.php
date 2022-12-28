@@ -22,5 +22,6 @@
         $conn = "";
         include "navbar.php";
         echo "<div class='container-fluid'>";
+        include "DBcontrol.php";
         include "DB.php";
         ?>
