@@ -44,7 +44,7 @@
                 <!--Miesto merania-->
                 <h4 class="display-5 mb-3">Miesto merania:<br></h3>
                 <div class="input-group mb-3">
-                    <h5 class="display-5 mb-0 mt-1">Okres: &nbsp;</h5>
+                    <h5 class="display-5 mt-1 ml-4">Okres: &nbsp;</h5>
                     <select class="form-select" name="okres" id="okres" aria-label="Okres" required>
                     <?php
                         $query_okres = "SELECT * FROM filip_soc.enum_okres eo WHERE eo.`kód krajiny` = '703';";
@@ -63,8 +63,8 @@
                 </div> 
 
                 <div class="input-group mb-3">
-                    <h5 class="display-5">Obec: &nbsp;</h5>
-                    <select class="form-select" name="obec" id="obec" aria-label="Obec" required>
+                    <h5 class="display-5 mt-1 ml-4">Obec: &nbsp;</h5>
+                    <select class="form-select ml-1" name="obec" id="obec" aria-label="Obec" required>
                     <?php
 
                         $okr = 703;
@@ -126,20 +126,20 @@
                         <form action="" method="POST">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Názov senzoru</span>
+                                    <span class="input-group-text ml-1" id="basic-addon1">Názov senzoru</span>
                                 </div>
-                                <input type="text" name="id_sensor" id="id_sensor" class="form-control" aria-describedby="id_sensor">
+                                <input type="text" name="id_sensor" id="id_sensor" class="form-control mr-1" aria-describedby="id_sensor">
                             </div>
 
                             <!--Vyuzitie-->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Vyuzitie</span>
+                                    <span class="input-group-text ml-1" id="basic-addon1">Vyuzitie</span>
                                 </div>
-                                    <input type="text" name="function" id="function" class="form-control" aria-describedby="function_sensor">
+                                    <input type="text" name="function" id="function" class="form-control mr-1" aria-describedby="function_sensor">
                                 
                             </div>
-                            <input type="submit" name="poslat" id="poslat" class="btn btn-primary">
+                            <input type="submit" name="poslat" id="poslat" class="btn btn-primary mr-3 float-right">
 
                             <?php
                                 if(isset($_POST["poslat"]))
