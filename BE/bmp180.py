@@ -56,7 +56,7 @@ print ("Pressure:    %.2f hPa" % (pressure / 100.0))
 #print ("Altitude:    %.2f" % altitude)
 
 while True :
-    sql= "INSERT INTO filip_soc.tbl_tlak (value, `timestamp`, miesto_merania, jednotka) VALUES(%.2f, %s, , 2);"
+    sql= "INSERT INTO filip_soc.tbl_tlak (value, `timestamp`, miesto_merania, jednotka) VALUES(%.2f, %s,507296, 2);"
     now = datetime.now()
     timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
     hodnota = correctPressure
@@ -65,7 +65,7 @@ while True :
     cursor.execute(sql,val)
     mydb.commit()
 
-    sql= "INSERT INTO filip_soc.tbl_tlak (value, `timestamp`, miesto_merania, jednotka) VALUES(%.2f, %s, , 2);"
+    sql= "INSERT INTO filip_soc.tbl_tlak (value, `timestamp`, miesto_merania, jednotka) VALUES(%.2f, %s,507296, 2);"
     now = datetime.now()
     timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
     hodnotaTeploty = temp

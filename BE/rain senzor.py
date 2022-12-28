@@ -57,7 +57,7 @@ if mydb.is_connected():
 while True:
     if not no_rain.is_active:
         print("It's raining - get the washing in!")
-        sql= "INSERT INTO filip_soc.tbl_dazd (hodnota, `timestamp`, miesto_merania, jednotka) VALUES('1', %s,, 2);"
+        sql= "INSERT INTO filip_soc.tbl_dazd (hodnota, `timestamp`, miesto_merania, jednotka) VALUES('1', %s,507296, 2);"
         now = datetime.now()
         timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
         hodnota = correctPressure
@@ -68,7 +68,7 @@ while True:
         posliEmail(SMTPserver,port,posielatel,heslo,prijmatel)
 
     else:
-        sql= "INSERT INTO filip_soc.tbl_dazd (hodnota, `timestamp`, miesto_merania, jednotka) VALUES('0', %s,, 2);"
+        sql= "INSERT INTO filip_soc.tbl_dazd (hodnota, `timestamp`, miesto_merania, jednotka) VALUES('0', %s,507296, 2);"
         now = datetime.now()
         timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
         hodnota = correctPressure
