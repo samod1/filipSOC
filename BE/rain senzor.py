@@ -6,7 +6,6 @@ from email import message
 
 import mysql.connector
 from mysql.connector import Error
-import mysql.connector
 from datetime import datetime
 from time import sleep
 from gpiozero import InputDevice
@@ -57,23 +56,26 @@ if mydb.is_connected():
 while True:
     if not no_rain.is_active:
         print("It's raining - get the washing in!")
-        sql= "INSERT INTO filip_soc.tbl_dazd (hodnota, `timestamp`, miesto_merania, jednotka) VALUES(%s %s,507296, 2);"
+        sql= "INSERT INTO filip_soc.tbl_dazd (hodnota, `timestamp`, miesto_merania) VALUES(%s, %s,%s);"
         now = datetime.now()
         timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
         hodnota = 1
+        miestoMerania=507296
         print(timeNow , hodnota)
-        val = (hodnota, timeNow)
+        val = (hodnota, timeNow, miestoMerania)
         cursor.execute(sql,val)
         mydb.commit()
         posliEmail(SMTPserver,port,posielatel,heslo,prijmatel)
 
     else:
-        sql= "INSERT INTO filip_soc.tbl_dazd (hodnota, `timestamp`, miesto_merania, jednotka) VALUES(%s, %s,507296, 2);"
+        sql= "INSERT INTO filip_soc.tbl_dazd (hodnota, `timestamp`, miesto_merania) VALUES(%s,%s,%s);"
         now = datetime.now()
         timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
         hodnota = 0
-        print(timeNow , hodnota)
-        val = (hodnota, timeNow)
+        miestoMerania = 507296
+        print(timeNow , hodnota, miestoMerania)
+        val = (hodnota, timeNow, miestoMerania)
         cursor.execute(sql,val)
         mydb.commit()
-    sleep(100)
+    sleep(90)
+
