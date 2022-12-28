@@ -17,6 +17,11 @@ else
      $admin_mode = FALSE;
 }
 
+//settings
+$query_settings = "SELECT * FROM filip_soc.tbl_settings ts WHERE id_nastavenia = 8;";
+$result_settings = mysqli_query($conn,$query_settings);
+$row_settings = mysqli_fetch_assoc($result_settings);
+
 ?>
 
 <div  class="container-fluid mb-5">
@@ -64,7 +69,24 @@ else
                                    ?>
                                    <tr>
                                         <td>Teplota</td>
-                                        <td> <?php echo $row_teplota["value"]." ".$row_teplota["jednotka"];?> </td>
+                                        <?php
+                                             if($row_settings["jednotky"] == 2)
+                                             {
+                                                  $vypocet = ($row_teplota["value"] * 1.8) + 32
+                                                  ?>
+                                                       <td> <?php echo $vypocet." "."°F";?> </td>
+                                                  <?php
+                                             }
+                                             else
+                                             {
+                                                  ?>
+                                                       <td> <?php echo $row_teplota["value"]." ".$row_teplota["jednotka"];?> </td>
+                                                  <?php
+                                             }
+                                        
+                                        
+                                        ?>
+                                        
                                         <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?> </td>
                                         <td> <?php echo $row_teplota["názov"];?> </td>              
                                         <td>
