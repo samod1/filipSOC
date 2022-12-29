@@ -1,4 +1,4 @@
-#! bin bash
+#! /bin/bash
 cd /home/pi/filipSOC/BE
 python3 DHT22.py &
 python3 bmp180_python3.py &
