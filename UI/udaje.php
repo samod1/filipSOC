@@ -89,8 +89,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                              if($row_settings["hod_format"] == 12)
                                              {
                                                   ?>
-                                                  <td> <?php echo date("Y.m.d - h:i:s A
-                                                  ", strtotime($row_teplota["timestamp"]));?> </td>
+                                                       <td> <?php echo date("Y.m.d - h:i:s A", strtotime($row_teplota["timestamp"]));?> </td>
                                                   <?php
                                              }
                                              else
