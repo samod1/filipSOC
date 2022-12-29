@@ -1,0 +1,12 @@
+[Unit]
+Description=Sluzba, ktora spusta celu meteostanicu do chodu
+After= multi-user.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/filipSOC/BE/DHT22.py
+ExecStart=/usr/bin/python3 /home/pi/filipSOC/BE/rain_sensor.py
+ExecStart=/usr/bin/python3 /home/pi/filipSOC/BE/bmp180_python3.py
+ExecStart=/usr/bin/python3 /home/pi/filipSOC/BE/soil_sensor.py
+
+[Install]
+WantedBy=multi-user.target
