@@ -10,7 +10,7 @@ def posliEmailNeg(server, port, sender, password, recipient):
     html = """\
         <html>
             <body>
-                <h1>Varovanie vo vasom sklenniku je momentalne vysoka teplota
+                <h1>Varovanie sucho - moze prist k uhynu rastlin</h1>
             </body>
             </html> """
     part2 = MIMEText(html, "html")
