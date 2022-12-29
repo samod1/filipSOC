@@ -18,23 +18,11 @@
 import smbus
 import time
 from ctypes import c_short
-import mysql.connector
-from mysql.connector import Error
-import mysql.connector
+from DB_func import InsertPressure
+from DB_func import InsertTemperature
 from datetime import datetime
 
-mydb = mysql.connector.connect(
-        host="db.dw082.nameserver.sk",
-        database="filip_soc",
-        user="filip_majchrak",
-        password="X5Me1BZj"   
-    )
 
-if mydb.is_connected():
-        db_Info = mydb.get_server_info()
-        print ("Connected to MySQL Server version", db_Info)
-
-        cursor=mydb.cursor()
 
  
 DEVICE = 0x77 # Default device I2C address
@@ -139,24 +127,8 @@ def main():
         (temperature,pressure)=readBmp180()
         print("Temperature : {0} C".format(temperature))
         print("Pressure    : {0} mbar".format(pressure))
-
-        sql= "INSERT INTO filip_soc.tbl_tlak (value, `timestamp`, miesto_merania, jednotka) VALUES(%s, %s,507296, 2);"
-        now = datetime.now()
-        timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
-        hodnota = pressure
-        print(timeNow , hodnota)
-        val = (hodnota, timeNow)
-        cursor.execute(sql,val)
-        mydb.commit()
-
-        sql= "INSERT INTO filip_soc.tbl_teplota (value, `timestamp`, miesto_merania, jednotka) VALUES(%s, %s,507296, 1);"
-        now = datetime.now()
-        timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
-        hodnotaTeploty = format(temperature)
-        print(timeNow , hodnotaTeploty)
-        val = (hodnotaTeploty, timeNow)
-        cursor.execute(sql,val)
-        mydb.commit()
+        InsertPressure(pressure)
+        InsertTemperature(temperature)
         time.sleep(5)
   
   
