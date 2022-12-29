@@ -1,12 +1,12 @@
 <?php
-     $server = "db.dw082.nameserver.sk";
-     $user = "filip_majchrak";
-     $pass = "X5Me1BZj";
-     $db = "filip_soc";
+    $server = "db.dw082.nameserver.sk";
+    $user = "filip_majchrak";
+    $pass = "X5Me1BZj";
+    $db = "filip_soc";
 
-     $conn= mysqli_connect($server,$user,$pass,$db);
+    $conn= mysqli_connect($server,$user,$pass,$db);
 
-     //kontrola udajov
+    //kontrola udajov
     //dazd
     $query_dazd_check = "SELECT  COUNT(*) FROM filip_soc.tbl_dazd td;";
     $result_dazd_check = mysqli_query($conn,$query_dazd_check);

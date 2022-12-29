@@ -1,22 +1,16 @@
 <?php
-/**
- * VNUTORNA UNIFORMNA STRUKTURA PROGRAMU
- * pouzivat bootstrapove divy 
- *      <div class="col">
- *          <div class = "row">
- *              <p>...</p>
- *          </div>
- *      <div>
- *  Na uvod suboru zavolat cez prikaz include z adresaru confs head.php a na zaver footer.php 
- */
-
-
 $conn = "";
 $nazovTabu ="Filip Stredoskolska praca";
 $stranka = "index";
 include "confs/head.php";
 
 $prsi = true;
+
+//settings
+$query_settings = "SELECT * FROM filip_soc.tbl_settings ts WHERE id_nastavenia = 8;";
+$result_settings = mysqli_query($conn,$query_settings);
+$row_settings = mysqli_fetch_assoc($result_settings);
+
 
 ?>
 
@@ -44,8 +38,36 @@ $prsi = true;
               <div class="card-body text-center">
                   <div class="card-header"><h1>Teplota</h1></div>
                 <div class="card-body">
-                  <h1 class="card-title"><?php echo $row_teplota["value"]." ". $row_teplota["jednotka"];?></h1>
-                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?></h5>
+                  <?php
+                    //Prepocitavanie teploty
+                    if($row_settings["jednotky"] == 2)
+                    {
+                        $vypocet = ($row_teplota["value"] * 1.8) + 32
+                        ?>
+                          <h1 class="card-title"><?php echo $vypocet." "."°F";?><h1>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                          <h1 class="card-title"><?php echo $row_teplota["value"]." ".$row_teplota["jednotka"];?></h1>
+                        <?php
+                    }
+
+                    //Prepocitavanie casu teplota
+                    if($row_settings["hod_format"] == 12)
+                    {
+                        ?>
+                          <h5 class="card-title"><?php echo date("Y.m.d - h:i:s A", strtotime($row_teplota["timestamp"]));?></h5>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                          <h5 class="card-title"><?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?></h5>
+                        <?php
+                    }
+                  ?>
                   <h5 class="card-text"><?php echo $row_teplota["názov"];?></h5>
                 </div>                   
               </div>
@@ -72,7 +94,21 @@ $prsi = true;
                   <div class="card-header"><h1>Tlak</h1></div>
                 <div class="card-body">
                   <h1 class="card-title"><?php echo $row_tlak["value"]." ". $row_tlak["jednotka"];?></h1>
-                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?></h5>
+                  <?php
+                    //Prepocitavanie casu teplota
+                    if($row_settings["hod_format"] == 12)
+                    {
+                        ?>
+                          <h5 class="card-title"><?php echo date("Y.m.d - h:i:s A", strtotime($row_tlak["timestamp"]));?></h5>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                          <h5 class="card-title"><?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?></h5>
+                        <?php
+                    }
+                  ?>
                   <h5 class="card-text"><?php echo $row_tlak["názov"];?></h5>
                 </div>                   
               </div>
@@ -98,7 +134,21 @@ $prsi = true;
                 <div class="card-header"><h1>Vlhkost</h1></div>
                 <div class="card-body">
                   <h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1>
-                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
+                  <?php
+                    //Prepocitavanie casu teplota
+                    if($row_settings["hod_format"] == 12)
+                    {
+                        ?>
+                          <h5 class="card-title"><?php echo date("Y.m.d - h:i:s A", strtotime($row_vlhkost["timestamp"]));?></h5>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                          <h5 class="card-title"><?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
+                        <?php
+                    }
+                  ?>
                   <h5 class="card-text"><?php echo $row_vlhkost["názov"];?></h5>
                 </div>                   
               </div>
