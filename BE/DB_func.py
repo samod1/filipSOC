@@ -58,3 +58,14 @@ def InsertSoil(value):
     val = (hodnota, timeNow, miestoMerania)
     cursor.execute(sql, val)
     mydb.commit()
+
+def InsertHumidity(humidity):
+    sql = "INSERT INTO filip_soc.tbl_vlhkost (hodnota, `timestamp`, miesto_merania) VALUES(%s, %s,%s);"
+    now = datetime.now()
+    timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
+    hodnota = humidity
+    miestoMerania = 507296
+    print(timeNow, hodnota)
+    val = (hodnota, timeNow, miestoMerania)
+    cursor.execute(sql, val)
+    mydb.commit()

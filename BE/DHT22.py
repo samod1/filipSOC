@@ -1,6 +1,10 @@
 import RPi.GPIO as GPIO
 import time
 
+import DB_func
+from DB_func import InsertHumidity
+
+
 #DHT11 connect to BCM_GPIO14
 DHTPIN = 4
 
@@ -111,8 +115,8 @@ def main():
         result = read_dht11_dat()
         if result:
             humidity, temperature = result
-            print("humidity: %s %%,  Temperature: %s C" % (humidity, temperature))
-        time.sleep(1)
+            DB_func.InsertHumidity(humidity)
+        time.sleep(150)
 
 
 def destroy():
