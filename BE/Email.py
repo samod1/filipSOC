@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 
 def posliEmailNeg(server, port, sender, password, recipient):
     message = MIMEMultipart("alternative")
-    message["Subject"] = "Varovanie prsanie"
+    message["Subject"] = "Varovanie sucho"
     message["From"] = sender
     message["To"] = recipient
     html = """\
@@ -26,7 +26,7 @@ def posliEmailNeg(server, port, sender, password, recipient):
 
 def posliEmailPozit(server, port, sender, password, recipient):
     message = MIMEMultipart("alternative")
-    message["Subject"] = "Varovanie prsanie"
+    message["Subject"] = "Varovanie sucho - UKONCENE"
     message["From"] = sender
     message["To"] = recipient
     html = """\
@@ -47,7 +47,7 @@ def posliEmailPozit(server, port, sender, password, recipient):
 
 def SendEmail(server, port, sender, password, recipient):
     message = MIMEMultipart("alternative")
-    message["Subject"] = "Varovanie prsanie"
+    message["Subject"] = "Varovanie "
     message["From"] = sender
     message["To"] = recipient
     html = """\

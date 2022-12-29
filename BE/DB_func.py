@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 import mysql.connector
-import datetime
+from datetime import datetime
 
 mydb = mysql.connector.connect(
         host="db.dw082.nameserver.sk",
