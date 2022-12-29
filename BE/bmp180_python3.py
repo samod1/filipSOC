@@ -129,7 +129,7 @@ def main():
         print("Pressure    : {0} mbar".format(pressure))
         InsertPressure(pressure)
         InsertTemperature(temperature)
-        time.sleep(5)
+        time.sleep(65)
   
   
 if __name__=="__main__":
