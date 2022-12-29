@@ -66,7 +66,7 @@ def InsertHumidity(humidity):
     hodnota = humidity
     miestoMerania = 507296
     jednotka = 3
-    print(timeNow, hodnota)
-    val = (hodnota, timeNow, miestoMerania)
+    print(timeNow, hodnota, jednotka)
+    val = (hodnota, timeNow, miestoMerania, jednotka)
     cursor.execute(sql, val)
     mydb.commit()
