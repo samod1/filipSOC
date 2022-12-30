@@ -26,7 +26,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
           <div class="col-sm">
           <!--Teplota-->
           <?php
-            $query_teplota = "SELECT Max(id_merania),value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
+            $query_teplota = "SELECT value,timestamp,eo.názov,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id ORDER BY id_merania DESC LIMIT 1;";
             $result_teplota = mysqli_query($conn,$query_teplota);
             $pocetriadkov_teplota = mysqli_num_rows($result_teplota);
 
@@ -80,7 +80,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
           <div class="col-sm">
           <!--Tlak-->
           <?php
-            $query_tlak = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt  INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id;";
+            $query_tlak = "SELECT value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt  INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id ORDER BY id_merania DESC LIMIT 1;";
             $result_tlak = mysqli_query($conn,$query_tlak);
             $pocetriadkov_tlak = mysqli_num_rows($result_tlak);
 
@@ -120,7 +120,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
           <div class="col-sm">
           <!--Vlhkost-->
           <?php
-            $query_vlhkost = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
+            $query_vlhkost = "SELECT hodnota,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id ORDER BY id_merania DESC LIMIT 1;";
             $result_vlhkost = mysqli_query($conn,$query_vlhkost);
             $pocetriadkov_vlhkost = mysqli_num_rows($result_vlhkost);
 
@@ -162,7 +162,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
           <div class="col-sm">
           <!--Dazd-->
           <?php
-            $query_dazd = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov FROM filip_soc.tbl_dazd td INNER JOIN filip_soc.enum_obce eo ON  td.miesto_merania = eo.kod;";
+            $query_dazd = "SELECT hodnota,timestamp,eo.názov FROM filip_soc.tbl_dazd td INNER JOIN filip_soc.enum_obce eo ON  td.miesto_merania = eo.kod ORDER BY id_merania DESC LIMIT 1";
             $result_dazd = mysqli_query($conn,$query_dazd);
 
             while ($row_dazd = mysqli_fetch_assoc($result_dazd))
