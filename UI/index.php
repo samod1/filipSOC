@@ -97,7 +97,7 @@ $prsi = true;
               <div class="card-body text-center">
                 <div class="card-header"><h1>Vlhkost</h1></div>
                 <div class="card-body">
-                  <h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1>
+                  <h1 class="card-title"><?php echo $row_vlhkost["hodnota"]." ". $row_vlhkost["jednotka"];?></h1>
                   <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
                   <h5 class="card-text"><?php echo $row_vlhkost["názov"];?></h5>
                 </div>                   
@@ -110,9 +110,8 @@ $prsi = true;
           <div class="col-sm">
           <!--Dazd-->
           <?php
-            $query_dazd = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov FROM filip_soc.tbl_dazd td INNER JOIN filip_soc.enum_obce eo ON  td.miesto_merainia = eo.kod;";
+            $query_dazd = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov FROM filip_soc.tbl_dazd td INNER JOIN filip_soc.enum_obce eo ON  td.miesto_merania = eo.kod;";
             $result_dazd = mysqli_query($conn,$query_dazd);
-            $pocetriadkov_dazd = mysqli_num_rows($result_dazd);
 
             while ($row_dazd = mysqli_fetch_assoc($result_dazd))
             { 
