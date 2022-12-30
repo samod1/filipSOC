@@ -84,7 +84,7 @@ $prsi = true;
           <div class="col-sm">
           <!--Vlhkost-->
           <?php
-            $query_vlhkost = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
+            $query_vlhkost = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
             $result_vlhkost = mysqli_query($conn,$query_vlhkost);
             $pocetriadkov_vlhkost = mysqli_num_rows($result_vlhkost);
 
