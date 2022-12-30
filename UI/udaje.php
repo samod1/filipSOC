@@ -367,9 +367,6 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                         <td>Vlhkost</td>
 
                                         <td> <?php echo $row_vlhkost["hodnota"]." ".$row_vlhkost["jednotka"];?> </td>
-                                        <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?> </td>
-
-                                        <td> <?php echo $row_vlhkost["value"]." ".$row_vlhkost["jednotka"];?> </td>
                                         <?php
                                              //Prepocitavanie casu vlhkost
                                              if($row_settings["hod_format"] == 12)
