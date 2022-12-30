@@ -17,6 +17,11 @@ else
      $admin_mode = FALSE;
 }
 
+//settings
+$query_settings = "SELECT * FROM filip_soc.tbl_settings ts WHERE id_nastavenia = 8;";
+$result_settings = mysqli_query($conn,$query_settings);
+$row_settings = mysqli_fetch_assoc($result_settings);
+
 ?>
 
 <div  class="container-fluid mb-5">
@@ -64,21 +69,49 @@ else
                                    ?>
                                    <tr>
                                         <td>Teplota</td>
-                                        <td> <?php echo $row_teplota["value"]." ".$row_teplota["jednotka"];?> </td>
-                                        <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?> </td>
-                                        <td> <?php echo $row_teplota["názov"];?> </td>              
-                                        <td>
-                                        <!-- Button informácie -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_teplota["id_merania"];?>">Informácie</button>
-                                        <!-- Button Zmazat-->
-                                        <?php 
-                                             if($admin_mode)
+                                        <?php
+                                             //Prepocitavanie teploty
+                                             if($row_settings["jednotky"] == 2)
                                              {
+                                                  $vypocet = ($row_teplota["value"] * 1.8) + 32
                                                   ?>
-                                                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_teplota["id_merania"];?>">Zmazat údaj</button>
+                                                       <td> <?php echo $vypocet." "."°F";?> </td>
                                                   <?php
                                              }
-                                        ?>              
+                                             else
+                                             {
+                                                  ?>
+                                                       <td> <?php echo $row_teplota["value"]." ".$row_teplota["jednotka"];?> </td>
+                                                  <?php
+                                             }
+
+                                             //Prepocitavanie casu teplota
+                                             if($row_settings["hod_format"] == 12)
+                                             {
+                                                  ?>
+                                                       <td> <?php echo date("Y.m.d - h:i:s A", strtotime($row_teplota["timestamp"]));?> </td>
+                                                  <?php
+                                             }
+                                             else
+                                             {
+                                                  ?>
+                                                       <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?> </td>
+                                                  <?php
+                                             }
+                                        ?>
+                                        <td> <?php echo $row_teplota["názov"];?> </td>              
+                                        <td>
+                                             <!-- Button informácie -->
+                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#informacie<?php echo $row_teplota["id_merania"];?>">Informácie</button>
+                                             <!-- Button Zmazat-->
+                                             <?php 
+                                                  if($admin_mode)
+                                                  {
+                                                       ?>
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_teplota["id_merania"];?>">Zmazat údaj</button>
+                                                       <?php
+                                                  }
+                                             ?>              
                                         </td>
 
                                         <!--Informačné okno-->
@@ -92,10 +125,38 @@ else
                                                             </button>
                                                        </div>
                                                        <div class="modal-body">
-                                                            <p><b>Čas merania:</b> <?php echo $row_teplota["timestamp"];?></p>
+                                                            <?php
+                                                                 //Prepocitavanie casu teplota
+                                                                 if($row_settings["hod_format"] == 12)
+                                                                 {
+                                                                      ?>
+                                                                           <p><b>Čas merania:</b> <?php echo date("Y.m.d - h:i:s A", strtotime($row_teplota["timestamp"]));?></p>
+                                                                      <?php
+                                                                 }
+                                                                 else
+                                                                 {
+                                                                      ?>
+                                                                           <p><b>Čas merania:</b> <?php echo date("Y.m.d - H:i:s", strtotime($row_teplota["timestamp"]));?></p>
+                                                                      <?php
+                                                                 }
+                                                            ?>
                                                             <p><b>Nazov senzoru: </b> </p>
                                                             <p><b>Vyuzitie: </b> </p>
-                                                            <p><b>Nameraná hodnota:</b> <?php echo $row_teplota["value"]." ".$row_teplota["jednotka"];?></p>
+                                                            <?php
+                                                                 if($row_settings["jednotky"] == 2)
+                                                                 {
+                                                                      $vypocet = ($row_teplota["value"] * 1.8) + 32
+                                                                      ?>
+                                                                          <p><b>Nameraná hodnota:</b> <?php echo $vypocet." "."°F";?></p>
+                                                                      <?php
+                                                                 }
+                                                                 else
+                                                                 {
+                                                                      ?>
+                                                                           <p><b>Nameraná hodnota:</b> <?php echo $row_teplota["value"]." ".$row_teplota["jednotka"];?></p>
+                                                                      <?php
+                                                                 }
+                                                            ?>  
                                                        </div>
                                                        <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -170,7 +231,21 @@ else
                                    <tr>
                                         <td>Tlak</td>
                                         <td> <?php echo $row_tlak["value"]." ".$row_tlak["jednotka"];?> </td>
-                                        <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?> </td>
+                                        <?php
+                                             //Prepocitavanie casu tlak
+                                             if($row_settings["hod_format"] == 12)
+                                             {
+                                                  ?>
+                                                       <td> <?php echo date("Y.m.d - h:i:s A", strtotime($row_tlak["timestamp"]));?> </td>
+                                                  <?php
+                                             }
+                                             else
+                                             {
+                                                  ?>
+                                                       <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?> </td>
+                                                  <?php
+                                             }
+                                        ?>
                                         <td> <?php echo $row_tlak["názov"];?> </td>              
                                         <td>
                                         <!-- Button informácie -->
@@ -198,7 +273,21 @@ else
                                                             </button>
                                                        </div>
                                                        <div class="modal-body">
-                                                            <p><b>Čas merania:</b> <?php echo $row_tlak["timestamp"];?></p>
+                                                            <?php
+                                                                 //Prepocitavanie casu tlak
+                                                                 if($row_settings["hod_format"] == 12)
+                                                                 {
+                                                                      ?>
+                                                                           <p><b>Čas merania:</b> <?php echo date("Y.m.d - h:i:s A", strtotime($row_tlak["timestamp"]));?></p>
+                                                                      <?php
+                                                                 }
+                                                                 else
+                                                                 {
+                                                                      ?>
+                                                                           <p><b>Čas merania:</b> <?php echo date("Y.m.d - H:i:s", strtotime($row_tlak["timestamp"]));?></p>
+                                                                      <?php
+                                                                 }
+                                                            ?>
                                                             <p><b>Nazov senzoru: </b> </p>
                                                             <p><b>Vyuzitie: </b> </p>
                                                             <p><b>Nameraná hodnota:</b> <?php echo $row_tlak["value"]." ".$row_tlak["jednotka"];?></p>
@@ -276,8 +365,27 @@ else
                                    ?>
                                    <tr>
                                         <td>Vlhkost</td>
+
                                         <td> <?php echo $row_vlhkost["hodnota"]." ".$row_vlhkost["jednotka"];?> </td>
                                         <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?> </td>
+
+                                        <td> <?php echo $row_vlhkost["value"]." ".$row_vlhkost["jednotka"];?> </td>
+                                        <?php
+                                             //Prepocitavanie casu vlhkost
+                                             if($row_settings["hod_format"] == 12)
+                                             {
+                                                  ?>
+                                                       <td> <?php echo date("Y.m.d - h:i:s A", strtotime($row_vlhkost["timestamp"]));?> </td>
+                                                  <?php
+                                             }
+                                             else
+                                             {
+                                                  ?>
+                                                       <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?> </td>
+                                                  <?php
+                                             }
+                                        ?>
+
                                         <td> <?php echo $row_vlhkost["názov"];?> </td>              
                                         <td>
                                         <!-- Button informácie -->
@@ -304,7 +412,21 @@ else
                                                             </button>
                                                        </div>
                                                        <div class="modal-body">
-                                                            <p><b>Čas merania:</b> <?php echo $row_vlhkost["timestamp"];?></p>
+                                                            <?php
+                                                                 //Prepocitavanie casu teplota
+                                                                 if($row_settings["hod_format"] == 12)
+                                                                 {
+                                                                      ?>
+                                                                           <p><b>Čas merania:</b> <?php echo date("Y.m.d - h:i:s A", strtotime($row_vlhkost["timestamp"]));?></p>
+                                                                      <?php
+                                                                 }
+                                                                 else
+                                                                 {
+                                                                      ?>
+                                                                           <p><b>Čas merania:</b> <?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></p>
+                                                                      <?php
+                                                                 }
+                                                            ?>
                                                             <p><b>Nazov senzoru: </b> </p>
                                                             <p><b>Vyuzitie: </b> </p>
                                                             <p><b>Nameraná hodnota:</b> <?php echo $row_vlhkost["hodnota"]." ".$row_vlhkost["jednotka"];?></p>
