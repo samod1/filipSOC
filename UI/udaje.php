@@ -355,7 +355,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                    
                                    <tbody class="table-active">
                                    <?php
-                                   $query_vlhkost = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON  tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tv.jednotka = ej.id ORDER BY id_merania DESC LIMIT 10;";
+                                   $query_vlhkost = "SELECT id_merania,hodnota,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON  tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tv.jednotka = ej.id ORDER BY id_merania DESC LIMIT 10;";
                                    $result_vlhkost = mysqli_query($conn,$query_vlhkost);
                                    $pocetriadkov_vlhkost = mysqli_num_rows($result_vlhkost);
                                   
@@ -365,6 +365,10 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                    ?>
                                    <tr>
                                         <td>Vlhkost</td>
+
+                                        <td> <?php echo $row_vlhkost["hodnota"]." ".$row_vlhkost["jednotka"];?> </td>
+                                        <td> <?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?> </td>
+
                                         <td> <?php echo $row_vlhkost["value"]." ".$row_vlhkost["jednotka"];?> </td>
                                         <?php
                                              //Prepocitavanie casu vlhkost
@@ -381,6 +385,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                                   <?php
                                              }
                                         ?>
+
                                         <td> <?php echo $row_vlhkost["názov"];?> </td>              
                                         <td>
                                         <!-- Button informácie -->
@@ -424,7 +429,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                                             ?>
                                                             <p><b>Nazov senzoru: </b> </p>
                                                             <p><b>Vyuzitie: </b> </p>
-                                                            <p><b>Nameraná hodnota:</b> <?php echo $row_vlhkost["value"]." ".$row_vlhkost["jednotka"];?></p>
+                                                            <p><b>Nameraná hodnota:</b> <?php echo $row_vlhkost["hodnota"]." ".$row_vlhkost["jednotka"];?></p>
                                                        </div>
                                                        <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

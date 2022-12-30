@@ -120,7 +120,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
           <div class="col-sm">
           <!--Vlhkost-->
           <?php
-            $query_vlhkost = "SELECT MAX(id_merania),value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
+            $query_vlhkost = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tv.jednotka = ej.id;";
             $result_vlhkost = mysqli_query($conn,$query_vlhkost);
             $pocetriadkov_vlhkost = mysqli_num_rows($result_vlhkost);
 
@@ -133,6 +133,10 @@ $row_settings = mysqli_fetch_assoc($result_settings);
               <div class="card-body text-center">
                 <div class="card-header"><h1>Vlhkost</h1></div>
                 <div class="card-body">
+
+                  <h1 class="card-title"><?php echo $row_vlhkost["hodnota"]." ". $row_vlhkost["jednotka"];?></h1>
+                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
+
                   <h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1>
                   <?php
                     //Prepocitavanie casu teplota
@@ -149,6 +153,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                         <?php
                     }
                   ?>
+
                   <h5 class="card-text"><?php echo $row_vlhkost["názov"];?></h5>
                 </div>                   
               </div>
@@ -160,9 +165,8 @@ $row_settings = mysqli_fetch_assoc($result_settings);
           <div class="col-sm">
           <!--Dazd-->
           <?php
-            $query_dazd = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov FROM filip_soc.tbl_dazd td INNER JOIN filip_soc.enum_obce eo ON  td.miesto_merainia = eo.kod;";
+            $query_dazd = "SELECT MAX(id_merania),hodnota,timestamp,eo.názov FROM filip_soc.tbl_dazd td INNER JOIN filip_soc.enum_obce eo ON  td.miesto_merania = eo.kod;";
             $result_dazd = mysqli_query($conn,$query_dazd);
-            $pocetriadkov_dazd = mysqli_num_rows($result_dazd);
 
             while ($row_dazd = mysqli_fetch_assoc($result_dazd))
             { 
