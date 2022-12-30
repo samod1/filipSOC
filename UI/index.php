@@ -135,9 +135,6 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                 <div class="card-body">
 
                   <h1 class="card-title"><?php echo $row_vlhkost["hodnota"]." ". $row_vlhkost["jednotka"];?></h1>
-                  <h5 class="card-text "><?php echo date("Y.m.d - H:i:s", strtotime($row_vlhkost["timestamp"]));?></h5>
-
-                  <h1 class="card-title"><?php echo $row_vlhkost["value"]." ". $row_vlhkost["jednotka"];?></h1>
                   <?php
                     //Prepocitavanie casu teplota
                     if($row_settings["hod_format"] == 12)
