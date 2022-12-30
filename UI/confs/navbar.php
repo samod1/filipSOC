@@ -17,7 +17,7 @@
               <a class="nav-link" href="index.php">Domov<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item <?php if($stranka == "grafy") {echo' active';} ?>">
-              <a class="nav-link" href="grafy.php">Grafy</a>
+              <a class="nav-link" href="https://samkodomin.grafana.net/d/c2IMPBpVk/soc-dashboard?from=1672420306000&to=1672422715000&orgId=1" target="_blank">Grafy</a>
             </li>
             <li class="nav-item <?php if($stranka == "udaje") {echo' active';} ?>">
               <a class="nav-link" href="udaje.php">Udaje</a>
