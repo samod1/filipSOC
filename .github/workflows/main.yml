@@ -1,0 +1,20 @@
+name: Production Deploy
+
+on:
+  release:
+    types: [published]
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.prod_ftp_server }} 
+          username: ${{ secrets.prod_ftp_user }} 
+          password: ${{ secrets.prod_ftp_password }}
+          local-dir: ./UI/
