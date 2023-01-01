@@ -8,7 +8,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
       with:
-        repository: ${{org}/filipSOC/UI
+        repository: samod1/filipSOC/UI
         ref: main
     
     - name: 📂 Sync files
