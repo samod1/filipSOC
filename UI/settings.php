@@ -137,7 +137,7 @@
                             </button>
                         </div>
                         <!--ID_senzoru-->
-                        <form action="" method="POST">
+                        <form action="confs/send_sensor_data.php" method="POST">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text ml-1" id="basic-addon1">Názov senzoru</span>
@@ -154,14 +154,6 @@
                                 
                             </div>
                             <input type="submit" name="poslat" id="poslat" class="btn btn-primary mr-3 float-right">
-
-                            <?php
-                                if(isset($_POST["poslat"]))
-                                {
-                                    include "confs/send_sensor_data.php";
-                                }
-                            ?>
-
                         </form>
                     </div>
                 </div>
