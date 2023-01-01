@@ -8,7 +8,7 @@ jobs:
     - name: 🚚 Get latest code
       run: |
         pwd
-        cd UI
+        cd filipSOC/UI
         pwd  
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
