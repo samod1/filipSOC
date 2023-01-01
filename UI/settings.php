@@ -18,26 +18,40 @@
                     <!--Jednotky-->
                     <h4 class="display-5 mb-0">Jednotky: &nbsp;</h3>
                     <select class="form-select" name="jednotky" aria-label="Jednotky">
-                        <option selected value="1">Metricke</option>
-                        <option value="2">Imperiálne</option>
+                        <?php
+                            $queryJednotky = "SELECT jednotky FROM tbl_settings WHERE id_nastavenia=8;";
+                            $resultJednotky = mysqli_query($conn, $queryJednotky);
+                            while($row = mysqli_fetch_assoc($resultJednotky))
+                            {
+                                ?>
+                                    <option value="1" <?php if ($row["jednotky"] == 1) {echo "selected";}?>>Metricke</option>
+                                    <option value="2" <?php if ($row["jednotky"] == 2) {echo "selected";}?>>Imperiálne</option>
+                                <?php
+                            }
+                        ?>
                     </select>
                 </div>
 
                 <div class="input-group mb-3">
                     <!--Formát času-->
                     <h4 class="display-5">Časový formát: &nbsp;</h3>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="radio" name="hodformat" value="24" id="hodformat" checked>
-                        <label class="form-check-label">
-                        24H &nbsp;
-                        </label>
-                    </div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="radio" name="hodformat" value="12" id="hodformat">
-                        <label class="form-check-label">
-                            12H &nbsp;
-                        </label>
-                    </div>
+                    <?php
+                            $queryJednotky = "SELECT hod_format FROM tbl_settings WHERE id_nastavenia=8;";
+                            $resultJednotky = mysqli_query($conn, $queryJednotky);
+                            while($row = mysqli_fetch_assoc($resultJednotky))
+                            {
+                                ?>
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" type="radio" name="hodformat" value="24" id="hodformat" <?php if($row["hod_format"]== 24){echo "checked";} ?>>
+                            <label class="form-check-label">24H &nbsp;</label>
+                        </div>
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" type="radio" name="hodformat" value="12" id="hodformat"<?php if($row["hod_format"]== 12){echo "checked";} ?>>
+                            <label class="form-check-label">12H &nbsp;</label>
+                        </div>
+                                <?php
+                            }
+                        ?>
                     <br>
                 </div>    
 
