@@ -16,22 +16,30 @@ if mydb.is_connected():
 
         cursor=mydb.cursor()
 
+def GetLocation():
+    sql="SELECT miesto_merania FROM tbl_settings WHERE id_nastavenia=8;"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+
+    return result[0][0]
 
 def InsertPressure(pressure):
-    sql = "INSERT INTO filip_soc.tbl_tlak (value, `timestamp`, miesto_merania, jednotka) VALUES(%s, %s,507296, 2);"
+    sql = "INSERT INTO filip_soc.tbl_tlak (value, `timestamp`, miesto_merania, jednotka) VALUES(%s, %s,%s, 2);"
     now = datetime.now()
     timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
     hodnota = pressure
+    miestoMerania = GetLocation()
     print(timeNow, hodnota)
     val = (hodnota, timeNow)
     cursor.execute(sql, val)
     mydb.commit()
 
 def InsertTemperature(temperature):
-    sql = "INSERT INTO filip_soc.tbl_teplota (value, `timestamp`, miesto_merania, jednotka) VALUES(%s, %s,507296, 1);"
+    sql = "INSERT INTO filip_soc.tbl_teplota (value, `timestamp`, miesto_merania, jednotka) VALUES(%s, %s,%s, 1);"
     now = datetime.now()
     timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
     hodnotaTeploty = format(temperature)
+    miestoMerania = GetLocation()
     print(timeNow, hodnotaTeploty)
     val = (hodnotaTeploty, timeNow)
     cursor.execute(sql, val)
@@ -42,7 +50,7 @@ def InsertRain(value):
     now = datetime.now()
     timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
     hodnota = value
-    miestoMerania = 507296
+    miestoMerania = GetLocation()
     print(timeNow, hodnota)
     val = (hodnota, timeNow, miestoMerania)
     cursor.execute(sql, val)
@@ -53,7 +61,7 @@ def InsertSoil(value):
     now = datetime.now()
     timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
     hodnota = value
-    miestoMerania = 507296
+    miestoMerania = GetLocation()
     print(timeNow, hodnota)
     val = (hodnota, timeNow, miestoMerania)
     cursor.execute(sql, val)
@@ -64,9 +72,11 @@ def InsertHumidity(humidity):
     now = datetime.now()
     timeNow = dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
     hodnota = humidity
-    miestoMerania = 507296
+    miestoMerania = GetLocation()
     jednotka = 3
     print(timeNow, hodnota, jednotka)
     val = (hodnota, timeNow, miestoMerania, jednotka)
     cursor.execute(sql, val)
     mydb.commit()
+
+print (GetLocation())
