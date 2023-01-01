@@ -1,4 +1,6 @@
-on: push  
+on: 
+  schedule:
+  - cron: "0 8 * * 0-6"
 name: 🚀 Deploy test on push
 jobs:
   web-deploy:
@@ -15,4 +17,3 @@ jobs:
           username: ${{ secrets.ftp_user }} 
           password: ${{ secrets.ftp_password }}
           local-dir: ./UI/
-
