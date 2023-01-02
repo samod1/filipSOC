@@ -1,6 +1,6 @@
 [![Production Deploy](https://github.com/samod1/filipSOC/actions/workflows/main.yml/badge.svg)](https://github.com/samod1/filipSOC/actions/workflows/main.yml)
 
-
+[![🚀 Deploy test on push](https://github.com/samod1/filipSOC/actions/workflows/toTest.yml/badge.svg)](https://github.com/samod1/filipSOC/actions/workflows/toTest.yml)
 
 # filipSOC
 ## Stredoskolska Odborna cinnost 
