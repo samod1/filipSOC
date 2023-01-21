@@ -68,25 +68,7 @@
 
                 <!--Miesto merania-->
                 <h4 class="display-5 mb-3">Miesto merania:<br></h3>
-                <div class="input-group mb-3">
-                    <h5 class="display-5 mt-1 ml-4">Okres: &nbsp;</h5>
-                    <select class="form-select" name="okres" id="okres" aria-label="Okres" required>
-                    <?php
-                        $query_okres = "SELECT * FROM filip_soc.enum_okres eo WHERE eo.`kód krajiny` = '703';";
-                        $result_okres = mysqli_query($conn,$query_okres);
-                        $pocetriadkov_okres = mysqli_num_rows($result_okres);
-                        
-                        while ($row_okres = mysqli_fetch_assoc($result_okres))
-                        { 
-                        ?>
-                            <!--vytvaranie moznosti-->
-                            <option value="<?php echo $row_okres["kód"];?>"> <?php echo $row_okres["názov"];?> </option>
-
-                        <?php } ?>
-
-                    </select>
-                </div> 
-
+                
                 <div class="input-group mb-3">
                     <h5 class="display-5 mt-1 ml-4">Obec: &nbsp;</h5>
                     <select class="form-select ml-1" name="obec" id="obec" aria-label="Obec" required>
@@ -94,7 +76,7 @@
 
                         $okr = 703;
 
-                        $query_obce = "SELECT kod,názov FROM filip_soc.enum_obce eo2 WHERE eo2.`kód okresu` = $okr";
+                        $query_obce = "SELECT kod, názov AS nazov FROM filip_soc.enum_obce eo  WHERE eo.`kód krajiny`=703 AND eo.`kód okresu` LIKE '20%' ORDER BY názov ASC";
                         $result_obce = mysqli_query($conn,$query_obce);
                         $pocetriadkov_obce = mysqli_num_rows($result_obce);
 
@@ -102,7 +84,7 @@
                         { 
                         ?>
                             <!--vytvaranie moznosti-->
-                            <option value="<?php echo $row_obce["kod"];?>"> <?php echo $row_obce["názov"];?> </option>
+                            <option value="<?php echo $row_obce["kod"];?>"> <?php echo $row_obce["nazov"];?> </option>
 
                         <?php } ?>
                     ?>
