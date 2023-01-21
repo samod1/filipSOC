@@ -140,8 +140,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                                                       <?php
                                                                  }
                                                             ?>
-                                                            <p><b>Nazov senzoru: </b> </p>
-                                                            <p><b>Vyuzitie: </b> </p>
+                                                            <p><b>Nazov senzoru: </b>BMP180 </p>
                                                             <?php
                                                                  if($row_settings["jednotky"] == 2)
                                                                  {
@@ -179,13 +178,14 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                                             <center><h3><b>Chceš naozaj zmazať údaj?</b></h3></center>
                                                        </div>
                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Ano</button>
+                                                            <button type="button" name="delete_teplota" id="delete_teplota" class="btn btn-primary" data-dismiss="modal">Ano</button>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Nie</button>
                                                        </div>
                                                   </div>
                                              </div>
                                         </div>
-                                   </tr>             
+                                   </tr>  
+                                   
                                    <?php } ?>
                                    </tbody>
                               </table>
@@ -288,8 +288,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                                                       <?php
                                                                  }
                                                             ?>
-                                                            <p><b>Nazov senzoru: </b> </p>
-                                                            <p><b>Vyuzitie: </b> </p>
+                                                            <p><b>Nazov senzoru: </b>BMP180 </p>
                                                             <p><b>Nameraná hodnota:</b> <?php echo $row_tlak["value"]." ".$row_tlak["jednotka"];?></p>
                                                        </div>
                                                        <div class="modal-footer">
@@ -313,13 +312,16 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                                             <center><h3><b>Chceš naozaj zmazať údaj?</b></h3></center>
                                                        </div>
                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Ano</button>
+                                                            <button type="button" name="delete_tlak" id="delete_tlak" class="btn btn-primary" data-dismiss="modal">Ano</button>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Nie</button>
                                                        </div>
                                                   </div>
                                              </div>
                                         </div>
-                                   </tr>             
+                                   </tr> 
+                                   
+                                   
+
                                    <?php } ?>
 
                                    </tbody>
@@ -424,8 +426,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                                                       <?php
                                                                  }
                                                             ?>
-                                                            <p><b>Nazov senzoru: </b> </p>
-                                                            <p><b>Vyuzitie: </b> </p>
+                                                            <p><b>Nazov senzoru: </b>HDT11</p>
                                                             <p><b>Nameraná hodnota:</b> <?php echo $row_vlhkost["hodnota"]." ".$row_vlhkost["jednotka"];?></p>
                                                        </div>
                                                        <div class="modal-footer">
@@ -449,7 +450,7 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                                                             <center><h3><b>Chceš naozaj zmazať údaj?</b></h3></center>
                                                        </div>
                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Ano</button>
+                                                            <button type="button" name="delete_vlhkost" id="delete_vlhkost" class="btn btn-primary" data-dismiss="modal">Ano</button>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Nie</button>
                                                        </div>
                                                   </div>
