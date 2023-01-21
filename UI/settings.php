@@ -4,6 +4,17 @@
     $nazovTabu ="Filip Stredoskolska praca";
     $stranka = "nastavenia";
     include "confs/head.php";
+
+    //kontrola role
+    if(isset($_GET["rola"]) && $_GET["rola"] == "admin")
+    {
+        $admin_mode = TRUE;
+    }
+    else
+    {
+        $_GET["rola"] = "user";
+        $admin_mode = FALSE;
+    }
 ?>
 
 
@@ -99,7 +110,14 @@
                 </div> 
 
                 <!--Save-->    
-                <input type="submit" name="save" id="save" class="btn btn-primary p-3">
+                <?php
+                    if($admin_mode)
+                    {
+                        ?>
+                            <input type="submit" name="save" id="save" class="btn btn-primary p-3">
+                        <?php    
+                    }
+                ?>
 
                 <!--Posielanie udajov do tbl_settings-->
                 <!--Edit sql-->
@@ -111,7 +129,6 @@
                    
                         $query_save_setings = "UPDATE filip_soc.tbl_settings SET hod_format = $hod_format, jednotky = $jednotky WHERE id_nastavenia = 8;";
                         $result_settings= mysqli_query($conn,$query_save_setings);
-                   
                     }  
 
                 ?>
@@ -124,7 +141,14 @@
             <h1 class="display-4">Senzory</h1>
             
             <!--ADD Senzor-->
-            <button type="button" class="btn btn-primary p-3 pull-right mb-3" data-toggle="modal" data-target="#ADD_sensor">Pridat</button>
+            <?php
+                    if($admin_mode)
+                    {
+                        ?>
+                            <button type="button" class="btn btn-primary p-3 pull-right mb-3" data-toggle="modal" data-target="#ADD_sensor">Pridat</button>
+                        <?php    
+                    }
+            ?>
             
             <!--modalne okno add-->
             <div class="modal fade bd-example-modal-lg" id="ADD_sensor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
