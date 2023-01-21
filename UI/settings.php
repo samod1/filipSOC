@@ -74,8 +74,6 @@
                     <select class="form-select ml-1" name="obec" id="obec" aria-label="Obec" required>
                     <?php
 
-                        $okr = 703;
-
                         $query_obce = "SELECT kod, názov AS nazov FROM filip_soc.enum_obce eo  WHERE eo.`kód krajiny`=703 AND eo.`kód okresu` LIKE '20%' ORDER BY názov ASC";
                         $result_obce = mysqli_query($conn,$query_obce);
                         $pocetriadkov_obce = mysqli_num_rows($result_obce);
@@ -108,8 +106,9 @@
                     {
                         $hod_format = $_POST["hodformat"];
                         $jednotky = $_POST["jednotky"];
+                        $miesto_merania = $_POST["obec"];
                    
-                        $query_save_setings = "UPDATE filip_soc.tbl_settings SET hod_format = $hod_format, jednotky = $jednotky WHERE id_nastavenia = 8;";
+                        $query_save_setings = "UPDATE filip_soc.tbl_settings SET hod_format = $hod_format, jednotky = $jednotky, miesto_merania = $miesto_merania WHERE id_nastavenia = 8;";
                         $result_settings= mysqli_query($conn,$query_save_setings);
                     }  
 
