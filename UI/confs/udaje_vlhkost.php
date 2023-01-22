@@ -1,3 +1,19 @@
+<?php
+    //maximum zobrazenych hodnot
+    $results_per_page_vlhkost = 10;  
+  
+    //aktuálna strana
+    if (!isset ($_GET['page_vlhkost']) ) {  
+        $page_vlhkost = 1;  
+    } else {  
+        $page_vlhkost = $_GET['page_vlhkost'];  
+    }  
+  
+    //odkial ma sql zacinat
+    $page_first_result_vlhkost = ($page_vlhkost-1) * $results_per_page_vlhkost;  
+
+?>
+
 <div class="tab-pane fade" id="vlhkost" role="tabpanel" aria-labelledby="vlhkost-tab">
      <!-- Tabulka s 10 poslednymi hodnotami-->
      <div id="pricing" class="container-fluid">
@@ -14,7 +30,7 @@
                
                <tbody class="table-active">
                <?php
-               $query_vlhkost = "SELECT id_merania,hodnota,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON  tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tv.jednotka = ej.id ORDER BY id_merania DESC LIMIT 10;";
+               $query_vlhkost = "SELECT id_merania,hodnota,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_vlhkost tv INNER JOIN filip_soc.enum_obce eo ON  tv.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tv.jednotka = ej.id ORDER BY id_merania DESC LIMIT $page_first_result_vlhkost,$results_per_page_vlhkost";
                $result_vlhkost = mysqli_query($conn,$query_vlhkost);
                $pocetriadkov_vlhkost = mysqli_num_rows($result_vlhkost);
                
@@ -121,13 +137,14 @@
      </div>
 
      <nav aria-label="Page">
-          <ul class="pagination">
-               <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-               <li class="page-item"><a class="page-link" href="#1">1</a></li>
-               <li class="page-item"><a class="page-link" href="#">2</a></li>
-               <li class="page-item"><a class="page-link" href="#">3</a></li>
-               <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-     </nav>               
+               <ul class="pagination ml-3">
+                    <?php
+                        //vytvaranie pagination
+                         for($page_vlhkost = 1; $page_vlhkost<= 10; $page_vlhkost++) {  
+                              echo'<li class="page-item"><a class="page-link" href="udaje.php?page_vlhkost='.$page_vlhkost.'">'.$page_vlhkost.'</a></li>';
+                         }
+                    ?>
+               </ul>
+          </nav>         
 
 </div>

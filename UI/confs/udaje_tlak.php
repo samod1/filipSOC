@@ -1,3 +1,19 @@
+<?php
+    //maximum zobrazenych hodnot
+    $results_per_page_tlak = 10;  
+  
+    //aktuálna strana
+    if (!isset ($_GET['page_tlak']) ) {  
+        $page_tlak = 1;  
+    } else {  
+        $page_tlak = $_GET['page_tlak'];  
+    }  
+  
+    //odkial ma sql zacinat
+    $page_first_result_tlak = ($page_tlak-1) * $results_per_page_tlak;  
+
+?>
+
 <div class="tab-pane fade" id="tlak" role="tabpanel" aria-labelledby="tlak-tab">
      <!-- Tabulka s 10 poslednymi hodnotami-->
      <div id="pricing" class="container-fluid">
@@ -14,7 +30,7 @@
                
                <tbody class="table-active">
                <?php
-               $query_tlak = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id ORDER BY id_merania DESC LIMIT 10;";
+               $query_tlak = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_tlak tt INNER JOIN filip_soc.enum_obce eo ON tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON tt.jednotka = ej.id ORDER BY id_merania DESC LIMIT $page_first_result_tlak,$results_per_page_tlak";
                $result_tlak = mysqli_query($conn,$query_tlak);
                $pocetriadkov_tlak = mysqli_num_rows($result_tlak);
                
@@ -123,12 +139,13 @@
      </div>
 
      <nav aria-label="Page">
-          <ul class="pagination">
-               <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-               <li class="page-item"><a class="page-link" href="#1">1</a></li>
-               <li class="page-item"><a class="page-link" href="#">2</a></li>
-               <li class="page-item"><a class="page-link" href="#">3</a></li>
-               <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <ul class="pagination ml-3">
+               <?php
+                    //vytvaranie pagination
+                    for($page_tlak = 1; $page_tlak<= 10; $page_tlak++) {  
+                         echo'<li class="page-item"><a class="page-link" href="udaje.php?page_tlak='.$page_tlak.'">'.$page_tlak.'</a></li>';
+                    }
+               ?>
           </ul>
      </nav>
 

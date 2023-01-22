@@ -1,3 +1,19 @@
+<?php
+    //maximum zobrazenych hodnot
+    $results_per_page = 10;  
+  
+    //aktuálna strana
+    if (!isset ($_GET['page_teplota']) ) {  
+        $page = 1;  
+    } else {  
+        $page = $_GET['page_teplota'];  
+    }  
+  
+    //odkial ma sql zacinat
+    $page_first_result = ($page-1) * $results_per_page;  
+
+?>
+
 <div class="tab-pane fade show active" id="teplota" role="tabpanel" aria-labelledby="teplota-tab">
 
      <!-- Tabulka s 10 poslednymi hodnotami-->
@@ -15,7 +31,7 @@
                
                <tbody class="table-active">
                <?php
-               $query_teplota = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON  tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tt.jednotka = ej.id ORDER BY id_merania DESC  LIMIT 10;";
+               $query_teplota = "SELECT id_merania,value,timestamp,eo.názov ,ej.jednotka  FROM filip_soc.tbl_teplota tt INNER JOIN filip_soc.enum_obce eo ON  tt.miesto_merania = eo.kod  INNER JOIN  filip_soc.enum_jednotky ej ON  tt.jednotka = ej.id ORDER BY id_merania DESC  LIMIT $page_first_result,$results_per_page";
                $result_teplota = mysqli_query($conn,$query_teplota);
                $pocetriadkov_teplota = mysqli_num_rows($result_teplota);
 
@@ -147,11 +163,12 @@
 
           <nav aria-label="Page">
                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    <?php
+                        //vytvaranie pagination
+                         for($page = 1; $page<= 10; $page++) {  
+                              echo'<li class="page-item"><a class="page-link" href="udaje.php?page_teplota='.$page.'">'.$page.'</a></li>';
+                         }
+                    ?>
                </ul>
           </nav>
 

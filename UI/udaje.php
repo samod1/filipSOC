@@ -25,6 +25,17 @@ $row_settings = mysqli_fetch_assoc($result_settings);
 ?>
 
 <div  class="container-fluid mb-5">
+<script>
+     $(document).ready(function(){
+     $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+          localStorage.setItem('activeTab', $(e.target).attr('href'));
+     });
+     var activeTab = localStorage.getItem('activeTab');
+     if(activeTab){
+          $('#myTab a[href="' + activeTab + '"]').tab('show');
+     }
+     });
+</script>
     <div class="row">
           <div class="col">
 
