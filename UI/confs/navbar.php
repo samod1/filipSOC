@@ -22,7 +22,7 @@
             <li class="nav-item <?php if($stranka == "udaje") {echo' active';} ?>">
               <a class="nav-link" href="udaje.php">Udaje</a>
             </li>
-            <li class="nav-item <?php if($stranka == "nastavenia") {echo' active';}?>">
+            <li class="nav-item mt-1 <?php if($stranka == "nastavenia") {echo' active';}?>">
               <a class="nav-link" href="settings.php"><i class="fa fa-cog" aria-hidden="true"></i></a>
             </li>
           </ul>
