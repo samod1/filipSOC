@@ -1,6 +1,8 @@
 on: 
-  schedule:
-  - cron: "0 8 * * 0-6"
+  push:
+    branches:
+      - "samod"
+      - "filip"
 name: 🚀 Deploy test on push
 jobs:
   web-deploy:
