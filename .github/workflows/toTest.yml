@@ -1,8 +1,9 @@
 on: 
-  push:
+  pull_request:
+    types:
+      - "closed"
     branches:
-      - "samod"
-      - "filip"
+      - "main"
 name: 🚀 Deploy test on push
 jobs:
   web-deploy:
