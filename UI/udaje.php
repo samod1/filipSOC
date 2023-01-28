@@ -29,13 +29,13 @@ $row_settings = mysqli_fetch_assoc($result_settings);
      <!--Nechávanie tej istej karty po reloade-->
      <script>
           $(document).ready(function(){
-          $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-               localStorage.setItem('activeTab', $(e.target).attr('href'));
-          });
-          var activeTab = localStorage.getItem('activeTab');
-          if(activeTab){
-               $('#myTab a[href="' + activeTab + '"]').tab('show');
-          }
+               $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+                    localStorage.setItem('activeTab', $(e.target).attr('href'));
+               });
+               var activeTab = localStorage.getItem('activeTab');
+               if(activeTab){
+                    $('#myTab a[href="' + activeTab + '"]').tab('show');
+               }
           });
      </script>
 
