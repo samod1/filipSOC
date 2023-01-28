@@ -1,6 +1,12 @@
 on: 
-  schedule:
-  - cron: "0 8 * * 0-6"
+    push:
+    pull_request:
+      types:
+        - "closed"
+      branches:
+        - "samod"
+        - "filip"
+        - "main"
 name: 🚀 Deploy test on push
 jobs:
   web-deploy:
