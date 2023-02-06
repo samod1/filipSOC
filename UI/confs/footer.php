@@ -16,11 +16,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <p><b>Verzia: </b> 1.0.0 </b>
-        <p><b>posledny commit:</b> <?
+        <p><b>Verzia: </b> 0.9.4</b>
+        <p><b>Vývojár: </b>Filip Majchrák, Samuel Domin</b> 
+        <?
         
         $gitCommit = "";
-        include "DB.php";
         
         echo $gitCommit;?></p>
       </div>
