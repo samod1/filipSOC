@@ -67,7 +67,7 @@
                          if($admin_mode)
                          {
                               ?>
-                                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_vlhkost["id_merania"];?>">Zmazat údaj</button>
+                                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#zmazat<?php echo $row_vlhkost["id_merania"];?>"></i>Zmazat údaj</button>
                               <?php
                          }
                     ?>     

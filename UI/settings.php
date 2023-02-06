@@ -28,7 +28,7 @@
                 <div class="input-group mb-3">
                     <!--Jednotky-->
                     <h4 class="display-5 mb-0">Jednotky: &nbsp;</h3>
-                    <select class="form-select" name="jednotky" aria-label="Jednotky">
+                    <select class="form-select" name="jednotky" aria-label="Jednotky" <?php if(!$admin_mode){echo"disabled";}?>>
                         <?php
                             $queryJednotky = "SELECT jednotky FROM tbl_settings WHERE id_nastavenia=8;";
                             $resultJednotky = mysqli_query($conn, $queryJednotky);
@@ -53,11 +53,11 @@
                             {
                                 ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="radio" name="hodformat" value="24" id="hodformat" <?php if($row["hod_format"]== 24){echo "checked";} ?>>
+                            <input class="form-check-input" type="radio" name="hodformat" value="24" id="hodformat" <?php if($row["hod_format"]== 24){echo "checked";} ?> <?php if(!$admin_mode){echo"disabled";}?>>
                             <label class="form-check-label">24H &nbsp;</label>
                         </div>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="radio" name="hodformat" value="12" id="hodformat"<?php if($row["hod_format"]== 12){echo "checked";} ?>>
+                            <input class="form-check-input" type="radio" name="hodformat" value="12" id="hodformat"<?php if($row["hod_format"]== 12){echo "checked";} if(!$admin_mode){echo"disabled";} ?> >
                             <label class="form-check-label">12H &nbsp;</label>
                         </div>
                                 <?php
@@ -71,7 +71,7 @@
                 
                 <div class="input-group mb-3">
                     <h5 class="display-5 mt-1 ml-4">Obec: &nbsp;</h5>
-                    <select class="form-select ml-1" name="obec" id="obec" aria-label="Obec" required>
+                    <select class="form-select ml-1" name="obec" id="obec" aria-label="Obec" required <?php if(!$admin_mode){echo"disabled";}?>>
                     <?php
 
                         $query_obce = "SELECT kod, názov AS nazov FROM filip_soc.enum_obce eo  WHERE eo.`kód krajiny`=703 AND eo.`kód okresu` LIKE '20%' ORDER BY názov ASC";
