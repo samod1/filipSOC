@@ -1,6 +1,6 @@
 <footer class="bg-dark text-center text-lg-start mt-5">
     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info"></i></button>
-    <p class="text-center text-white mb-0"><?php echo exec("git log --pretty=%h -n1 HEAD"); ?></p>
+    <p class="text-center text-white mb-0"></p>
 </footer>
 
 </body>
@@ -17,12 +17,34 @@
       </div>
       <div class="modal-body">
         <p><b>Verzia: </b> 1.0.0 </b>
-        <p><b>posledny commit:</b> <?
+        <p><b>posledny commit: </b><?php
         
-        $gitCommit = "";
-        include "DB.php";
-        
-        echo $gitCommit;?></p>
+        $curl = curl_init();
+        $headers = ["Accept: application/vnd.github+json",
+"Authorization: Bearer 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",
+"X-GitHub-Api-Version: 2022-11-28"];
+
+$queryParams = "per_page=1";
+
+curl_setopt_array($curl,[
+  CURLOPT_RETURNTRANSFER => 1,
+  CURLOPT_URL => 'https://api.github.com/repos/samod1/filipSOC/commits/main',
+  CURLOPT_USERAGENT=> "Github API in CURL",
+  CURLOPT_HTTPHEADER => $headers
+  
+  
+]);
+
+$response = curl_exec($curl);
+
+$decodeJson= json_decode($response,true);
+
+//var_dump(json_decode($response));
+//echo $decodeJson["sha"];
+$shortID = mb_substr($decodeJson["sha"],0,7);
+echo $shortID; 
+curl_close($curl);
+?>
       </div>
       <div class="modal-footer">
         <button type="button" class=" btn btn-lg btn-block btn-secondary" data-dismiss="modal">Close</button>
