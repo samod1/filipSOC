@@ -187,6 +187,8 @@ $row_settings = mysqli_fetch_assoc($result_settings);
                       {
                         ?>
                         <h1 class="card-text mt-4"><i class="fa fa-times" aria-hidden="true"></i><h1>
+                        <h5 class="card-text"><?php echo date("Y.m.d - H:i:s", strtotime($row_dazd["timestamp"]));?></h5>
+                        <h5 class="card-text"><?php echo $row_dazd["názov"];?></h5>
                         <?php
                       }
                       ?>
