@@ -19,11 +19,11 @@
 
         <p><b>Verzia: </b> 0.9.4</b>
         <p><b>Vývojár: </b>Filip Majchrák, Samuel Domin</b> 
-        <p><b>posledny commit: </b><?php
+        <p><b>Posledny commit: </b><?php
         
         $curl = curl_init();
         $headers = ["Accept: application/vnd.github+json",
-"Authorization: Bearer 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",
+"Authorization: Bearer {{$secrets.api_secret}}",
 "X-GitHub-Api-Version: 2022-11-28"];
 
 $queryParams = "per_page=1";
