@@ -23,7 +23,7 @@
         
         $curl = curl_init();
         $headers = ["Accept: application/vnd.github+json",
-"Authorization: Bearer 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",
+"Authorization: Bearer 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",
 "X-GitHub-Api-Version: 2022-11-28"];
 
 $queryParams = "per_page=1";
