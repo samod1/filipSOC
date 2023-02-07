@@ -16,7 +16,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <p><b>Verzia: </b> 1.0.0 </b>
+
+        <p><b>Verzia: </b> 0.9.4</b>
+        <p><b>Vývojár: </b>Filip Majchrák, Samuel Domin</b> 
         <p><b>posledny commit: </b><?php
         
         $curl = curl_init();
@@ -45,6 +47,8 @@ $shortID = mb_substr($decodeJson["sha"],0,7);
 echo $shortID; 
 curl_close($curl);
 ?>
+
+        
       </div>
       <div class="modal-footer">
         <button type="button" class=" btn btn-lg btn-block btn-secondary" data-dismiss="modal">Close</button>
