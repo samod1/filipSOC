@@ -16,39 +16,7 @@
         </button>
       </div>
       <div class="modal-body">
-
-        <p><b>Verzia: </b> 0.9.4</b>
-        <p><b>Vývojár: </b>Filip Majchrák, Samuel Domin</b> 
-        <p><b>Posledny commit: </b><?php
-        
-        $curl = curl_init();
-        $headers = ["Accept: application/vnd.github+json",
-"Authorization: Bearer {{$secrets.api_secret}}",
-"X-GitHub-Api-Version: 2022-11-28"];
-
-$queryParams = "per_page=1";
-
-curl_setopt_array($curl,[
-  CURLOPT_RETURNTRANSFER => 1,
-  CURLOPT_URL => 'https://api.github.com/repos/samod1/filipSOC/commits/main',
-  CURLOPT_USERAGENT=> "Github API in CURL",
-  CURLOPT_HTTPHEADER => $headers
-  
-  
-]);
-
-$response = curl_exec($curl);
-
-$decodeJson= json_decode($response,true);
-
-//var_dump(json_decode($response));
-//echo $decodeJson["sha"];
-$shortID = mb_substr($decodeJson["sha"],0,7);
-echo $shortID; 
-curl_close($curl);
-?>
-
-        
+          <?php include "curlFooter.php"?>        
       </div>
       <div class="modal-footer">
         <button type="button" class=" btn btn-lg btn-block btn-secondary" data-dismiss="modal">Close</button>
