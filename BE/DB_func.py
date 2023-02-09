@@ -78,5 +78,3 @@ def InsertHumidity(humidity):
     val = (hodnota, timeNow, miestoMerania, jednotka)
     cursor.execute(sql, val)
     mydb.commit()
-
-print (GetLocation())
