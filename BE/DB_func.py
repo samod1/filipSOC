@@ -41,7 +41,7 @@ def InsertTemperature(temperature):
     hodnotaTeploty = format(temperature)
     miestoMerania = GetLocation()
     print(timeNow, hodnotaTeploty)
-    val = (hodnotaTeploty, timeNow)
+    val = (hodnotaTeploty, timeNow, miestoMerania)
     cursor.execute(sql, val)
     mydb.commit()
 
