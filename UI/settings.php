@@ -15,6 +15,11 @@
         $_GET["rola"] = "user";
         $admin_mode = FALSE;
     }
+
+    $query_get_settings = "SELECT miesto_merania FROM filip_soc.tbl_settings ts;";
+    $result_get_settings = mysqli_query($conn,$query_get_settings);
+    $pocetriadkov_get_settings = mysqli_num_rows($result_get_settings);
+    $row_get_settings = mysqli_fetch_assoc($result_get_settings)
 ?>
 
 
@@ -82,7 +87,15 @@
                         { 
                         ?>
                             <!--vytvaranie moznosti-->
-                            <option value="<?php echo $row_obce["kod"];?>"> <?php echo $row_obce["nazov"];?> </option>
+                            <option value="<?php echo $row_obce["kod"];?>" 
+                                <?php
+                                    if($row_get_settings["miesto_merania"] == $row_obce["kod"])
+                                    {
+                                        echo "selected";
+                                    }
+                                ?>> 
+                                <?php echo $row_obce["nazov"]; ?> 
+                            </option>
 
                         <?php } ?>
                     ?>
@@ -109,7 +122,7 @@
                         $miesto_merania = $_POST["obec"];
                    
                         $query_save_setings = "UPDATE filip_soc.tbl_settings SET hod_format = $hod_format, jednotky = $jednotky, miesto_merania = $miesto_merania WHERE id_nastavenia = 8;";
-                        $result_settings= mysqli_query($conn,$query_save_setings);
+                        $result_settings = mysqli_query($conn,$query_save_setings);
                     }  
 
                 ?>
