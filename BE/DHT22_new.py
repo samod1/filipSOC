@@ -1,8 +1,7 @@
 import Adafruit_DHT
 import math
 import time
-import DB_func
-from DB_func import InsertHumidity
+
 
 while True:
     humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, 4)
