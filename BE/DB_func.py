@@ -30,7 +30,7 @@ def InsertPressure(pressure):
     hodnota = pressure
     miestoMerania = GetLocation()
     print(timeNow, hodnota)
-    val = (hodnota, timeNow)
+    val = (hodnota, timeNow, miestoMerania)
     cursor.execute(sql, val)
     mydb.commit()
 
