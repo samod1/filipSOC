@@ -7,5 +7,5 @@ while True:
 
     humidityTxt=f.read()
     DB_func.InsertHumidity(humidity)
-    f.read()
+    f.close()
     time.sleep(11)
