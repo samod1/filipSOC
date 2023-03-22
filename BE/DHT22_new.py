@@ -14,7 +14,9 @@ while True:
       #print 'Temperatuur: {0:0.1f}*C'.format(temperature)
       humidityFormated =  '{0:0.1f}'.format(humidity)
       print(humidityFormated)
-      DB_func.InsertHumidity(humidityFormated)
+      f = open("demofile2.txt", "w")
+      f.write(humidityFormated)
+      f.close()
      
 
     else:
